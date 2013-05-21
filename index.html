@@ -15,14 +15,16 @@
         <!--<script src="js/vendor/modernizr-2.6.2.min.js"></script>-->
     </head>
     <body>
-        <div class="tymer hidden">
-
-        </div>
+        <div class="tymer hidden"></div>
+		<div class="tymer-control">
+			<button type="button" class="btn js-pause">Pause</button>
+			<button type="button" class="btn js-clear">Clear</button>
+		</div>
         <div class="tymer-set">
             <form action="index.html" method="post" class="js-set">
                 <fieldset>
-                    <p>I want a tymer for <input class="inline js-minutes" type="number" name="minutes" min="1" max="60" value="1"> minutes</p>
-                    <button class="btn submit js-create" type="submit">Create Tymer</button>
+                    <p>I want a Tymer for <input class="inline js-minutes" type="number" name="minutes" min="1" max="60" value="1"> minutes</p>
+                    <button class="btn submit js-start" type="submit">Start Tymer</button>
                 </fieldset>
             </form>
         </div>
