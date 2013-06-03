@@ -6,3 +6,9 @@ Tymer is a simple web based countdown app. It has been designed to be lightweigh
 ###Technology
 
 Tymer uses Javascript, CSS and HTML to make the magic happen.
+
+###Credits
+
+HTML5 Boilerplate: http://html5boilerplate.com/
+jQuery: http://jquery.com/
+Keith Wood's Countdown jQuery plugin: http://keith-wood.name/countdown.html

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,21 +7,29 @@
         <meta name="description" content="A web based countdown timer.">
         <meta name="viewport" content="width=device-width">
 
+        <link href='http://fonts.googleapis.com/css?family=Oswald:700|Open+Sans' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="library/css/normalize.min.css">
         <link rel="stylesheet" href="library/css/main.min.css">
-        <!--<script src="js/vendor/modernizr-2.6.2.min.js"></script>-->
     </head>
     <body>
-        <div class="tymer hidden"></div>
-		<div class="tymer-control">
-			<button type="button" class="btn js-pause">Pause</button>
-			<button type="button" class="btn js-clear">Clear</button>
-		</div>
-        <div class="tymer-set">
+        <div class="container">
+            <div class="tymer clearfix">
+                <span class="number mins">01</span>
+                <span class="sep">:</span>
+                <span class="number secs">00</span>
+            </div>
+        </div>
+
+        <div class="tymer-control hidden clearfix">
+            <button type="button" class="btn control js-pause">Pause</button>
+            <button type="button" class="btn clear js-clear">Clear</button>
+        </div>
+
+        <div class="tymer-set clearfix">
             <form action="index.html" method="post" class="js-set">
                 <fieldset>
-                    <p>I want a Tymer for <input class="inline js-minutes" type="number" name="minutes" min="1" max="60" value="1"> minutes</p>
-                    <button class="btn submit js-start" type="submit">Start Tymer</button>
+                    <div class="statement"><span class="elaborate">I need a</span> Tymer for <input class="inline js-minutes" type="number" name="minutes" min="1" max="99" value="1"> <span class="elaborate">minutes</span></div>
+                    <button class="btn start js-start" type="submit">Start Tymer</button>
                 </fieldset>
             </form>
         </div>
@@ -34,11 +39,5 @@
         <script src="library/js/vendor/jquery.countdown.min.js"></script>
         <script src="library/js/main.js"></script>
 
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
     </body>
 </html>
