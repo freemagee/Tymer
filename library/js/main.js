@@ -1,4 +1,5 @@
-$(document).ready(function(){
+$(document).ready(function() {
+    // Tymer related events
     $('.js-minutes').on('change', function() {
         var setMinutes = leadingZero($(this).val());
 
@@ -8,8 +9,8 @@ $(document).ready(function(){
     $('.js-set').on('submit', function() {
         var setMinutes = $('.js-minutes').val();
 
-        if ($('.message.success').length > 0) {
-            $('.message.success').remove();
+        if ($('.message.complete').length > 0) {
+            $('.message.complete').remove();
         }
 
         if (setMinutes <= 99) {
@@ -17,7 +18,7 @@ $(document).ready(function(){
 
             $('.tymer-set').addClass('hidden');
             $('.tymer-control').removeClass('hidden');
-            $('.tymer').removeClass('hidden').countdown({
+            $('.tymer').countdown({
                 until: countdownUntil,
                 format: 'MS',
                 compact: true,
@@ -50,7 +51,10 @@ $(document).ready(function(){
     });
 
     function allDone() {
-        $('<span class="message complete">Tymer Completed</span>').prependTo('.container');
+        $('<div class="message complete">Tymer Completed</div>').prependTo('.container').hide().slideDown(1000);
+        setTimeout(function(){
+            $('.message.complete').slideUp(1000);
+        }, 4000);
         clearTymer();
     }
 
@@ -70,4 +74,27 @@ $(document).ready(function(){
 
         return n;
     }
+
+    function fit() {
+        var buffer = $('.tymer-set').height(),
+        tymerHeight = window.innerHeight - buffer,
+        css = '<style type="text/css" id="fit">.tymer { height : ' + tymerHeight + 'px } .tymer span { line-height : ' + tymerHeight + 'px }</style>';
+
+        // $('.tymer').css({'min-height' : tymerHeight + 'px'});
+        // $('.tymer span').css({
+        //     'line-height' : tymerHeight + 'px'
+        // });
+
+        if ($('#fit').length > 0) {
+            $('#fit').remove();
+        }
+        $(css).appendTo('head');
+    }
+
+    // Initiate correct window size
+    fit();
+
+    $(window).on('resize', function(){
+        fit();
+    });
 });
