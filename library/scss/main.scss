@@ -37,16 +37,6 @@ $LOGO
 /*-----------------------------------------------
 $TYPE
 -----------------------------------------------*/
-
-/*--- HEADINGS ---*/
-
-/*--- PARAGRAPHS ---*/
-
-/*--- LISTS ---*/
-
-/*--- LINKS ---*/
-
-/*--- MISC ---*/
 .statement {
     background: #C0C0C0;
     line-height: 50px;
@@ -63,7 +53,6 @@ $TYPE
 /*-----------------------------------------------
 $IMAGES
 -----------------------------------------------*/
-
 img {
     vertical-align: middle;
 }
@@ -87,7 +76,6 @@ img {
 /*-----------------------------------------------
 $FORMS
 -----------------------------------------------*/
-
 input[type="number"] {
     width: 2.5em;
 }
@@ -143,9 +131,6 @@ $MESSAGES
 /*-----------------------------------------------
 $TYMER
 -----------------------------------------------*/
-.tymer {
-    //height: 21.5em;
-}
 .tymer-set,
 .tymer-control {
     max-width: 1500px;
@@ -285,7 +270,7 @@ $CLASSES
     margin-left: 10px;
 }
 
-/*--- CLEAFIX ---*/
+/*--- CLEARFIX ---*/
 
 /*
  * Clearfix: contain floats
@@ -372,9 +357,6 @@ $CLASSES
 $MEDIA QUERIES
 -----------------------------------------------*/
 @media only screen and (min-width: 480px) {
-    .tymer {
-        //height: 16.5em;
-    }
     .number,
     .sep {
         font-size: 11em;
@@ -418,18 +400,12 @@ $MEDIA QUERIES
     }
 }
 @media only screen and (min-width: 660px) {
-    .tymer {
-        //height: 24em;
-    }
     .number,
     .sep {
         font-size: 16em;
     }
 }
 @media only screen and (min-width: 768px) {
-    .tymer {
-        //height: 27em;
-    }
     .number,
     .sep {
         font-size: 18em;
@@ -439,18 +415,12 @@ $MEDIA QUERIES
     }
 }
 @media only screen and (min-width: 800px) {
-    .tymer {
-        //height: 30em;
-    }
     .number,
     .sep {
         font-size: 20em;
     }
 }
 @media only screen and (min-width: 992px) {
-    .tymer {
-        //height: 37.5em;
-    }
     .number,
     .sep {
         font-size: 25em;
@@ -467,9 +437,6 @@ $MEDIA QUERIES
     }
 }
 @media only screen and (min-width: 1280px) {
-    .tymer {
-        //height: 39em;
-    }
     .number,
     .sep {
         font-size: 26em;
