@@ -1,0 +1,630 @@
+/*-----------------------------------------------
+$SASS VARIABLES
+-----------------------------------------------*/
+$complete: rgb(183,253,147);
+$error: rgb(253,147,183);
+$btn: #666;
+$spinner-secs: rgb(0,176,53);
+$spinner-mins: rgb(0,159,227);
+$btn-clr: rgb(178,42,22);
+$light: #E8E8E8;
+$dark: #333;
+$input-background: #fffcdc;
+$input-color: #666;
+$tymer: #333;
+
+/*-----------------------------------------------
+$MIXINS
+-----------------------------------------------*/
+@mixin respond-to($point) {
+    @if $point == 370 {
+        @media (min-width: 370px) { @content; }
+    }
+    @else if $point == 480 {
+        @media (min-width: 480px) { @content; }
+    }
+    @else if $point == 600 {
+        @media (min-width: 600px) { @content; }
+    }
+    @else if $point == 660 {
+        @media (min-width: 660px) { @content; }
+    }
+    @else if $point == 768 {
+        @media (min-width: 768px) { @content; }
+    }
+    @else if $point == 800 {
+        @media (min-width: 800px) { @content; }
+    }
+    @else if $point == 992 {
+        @media (min-width: 992px) { @content; }
+    }
+    @else if $point == 1280 {
+        @media (min-width: 1280px) { @content; }
+    }
+}
+
+@mixin box-sizing($type) {
+    -webkit-box-sizing: #{$type}-box;
+    -moz-box-sizing: #{$type}-box;
+    box-sizing: #{$type}-box;
+}
+
+@mixin transition($property: all, $time: 0.5, $ease: ease-in-out) {
+    // transition times
+    -moz-transition-duration: #{$time}s;
+    -webkit-transition-duration: #{$time}s;
+    transition-duration: #{$time}s;
+    // transition properties
+    -moz-transition-property: $property;
+    -webkit-transition-property: $property;
+    transition-property: $property;
+    // transition function
+    -moz-transition-timing-function: $ease;
+    -webkit-transition-timing-function: $ease;
+    transition-timing-function: $ease;
+}
+
+/*-----------------------------------------------
+$MAIN
+-----------------------------------------------*/
+html,
+body {
+    height: 100%;
+}
+body {
+    font:400 16px/1.5 'Open Sans', sans-serif;
+    background: #222;
+    color: #666;
+    // overflow: hidden;
+    // position: relative;
+}
+@media all and (max-device-width: 480px) {
+    html, body { -webkit-text-size-adjust:none; }
+}
+@media all and (min-device-width: 768px) and (max-device-width: 1024px) {
+    html, body { -webkit-text-size-adjust:none; }
+}
+
+
+/*-----------------------------------------------
+$STRUCTURE
+-----------------------------------------------*/
+.container {
+    //max-width: 1500px;
+    margin: 0 auto;
+}
+.content {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 3em 1em;
+}
+
+/*-----------------------------------------------
+$LOGO
+-----------------------------------------------*/
+.logo-icon {
+    display: block;
+    width: 144px;
+    height: 144px;
+    margin: 0 auto 2em;
+}
+
+
+/*-----------------------------------------------
+$TYPE
+-----------------------------------------------*/
+h1, .alpha {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin: 0 0 1em 0;
+    padding: 0;
+    color: $light;
+    @include respond-to(600) {
+        font-size: 2em;
+    }
+}
+h2 {
+    margin: 0;
+    padding: 0;
+    color: $light;
+}
+p {
+    margin: 0 0 1.5em 0;
+    padding: 0;
+    color: $light;
+}
+.elaborate {
+    display: none;
+}
+
+/*-----------------------------------------------
+$LINKS
+-----------------------------------------------*/
+a {
+    text-decoration: none;
+    color: $btn;
+}
+a:hover,
+a:active {
+    color: lighten($btn, 30%);
+    text-shadow: 0 1px 1px #000;
+}
+
+/*-----------------------------------------------
+$IMAGES
+-----------------------------------------------*/
+img {
+    vertical-align: middle;
+}
+
+/*--- FIGURES ---*/
+figure {
+    background-color: $light;
+    margin-bottom: 1.5em;
+}
+figure img {
+    max-width: 100%;
+}
+figcaption {
+    text-align: center;
+    padding: 0.5em;
+    color: $dark;
+    font-size: 0.875em;
+}
+
+/*--- IMAGE REPLACEMENT ---*/
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+
+/*-----------------------------------------------
+$FORMS
+-----------------------------------------------*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    background-color: $input-background;
+    color: $input-color;
+    padding: 0;
+    border: 0;
+    font-size: 1.25em;
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    text-align: center;
+    -webkit-appearance: none;
+    border-radius: 0;
+    @include respond-to(600) {
+        height: 75px;
+        line-height: 75px;
+        font-size: 1.5em;
+    }
+}
+input[type="number"]:focus {
+    background-color: darken($input-background, 5%);
+    color: darken($input-color, 5%);
+    outline: 0;
+}
+
+
+/*-----------------------------------------------
+$MESSAGES
+-----------------------------------------------*/
+.message {
+    cursor: pointer;
+    position: absolute;
+    font-weight: 700;
+    font-size: 1.4em;
+    text-align: center;
+    color: #444;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    @include transition(all, 0.3);
+    @include respond-to(600) {
+        font-size: 2em;
+    }
+}
+
+/* Ref: http://css-tricks.com/centering-in-the-unknown/ */
+
+/* The ghost, nudged to maintain perfect centering */
+.message:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */
+.message-text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    height: auto;
+    visibility: hidden;
+    @include transition(all, 0.3);
+    @include respond-to(600) {
+        width: 600px;
+    }
+    text-shadow: 0 -1px 0 #222;
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.message-text {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0;
+    @include transition(all, 0.3);
+}
+
+.show .message-text {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    visibility: visible;
+    opacity: 1;
+}
+
+.complete {
+    //color: darken($complete, 60%);
+    background: $complete;
+}
+.error {
+    //color: darken($error, 60%);
+    background: $error;
+}
+
+
+/*-----------------------------------------------
+$TYMER
+-----------------------------------------------*/
+.tymer {
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    @include transition(opacity);
+}
+.tymer-controls {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    @include respond-to(600) {
+        height: 75px;
+    }
+}
+.tymer.active {
+    visibility: visible;
+    opacity: 1;
+}
+.tymer-set,
+.tymer-clear {
+    position: absolute;
+    width: 100%;
+    //max-width: 1500px;
+    @include transition(left);
+}
+.tymer-set {
+    background: #C0C0C0;
+    line-height: 50px;
+    left: -100%;
+}
+.tymer-clear {
+    left: 100%;
+}
+.tymer-set.active,
+.tymer-clear.active {
+    left: 0;
+}
+.tymer span {
+    float: left;
+    display: block;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+.number {
+    color: $tymer;
+    font-family: 'Oswald', monospace;
+    font-weight: 700;
+    width: 48%;
+    -webkit-font-smoothing: antialiased;
+    // font-size: 7em;
+    // @include respond-to(370) {
+    //     font-size: 9em;
+    // }
+    // @include respond-to(480) {
+    //     font-size: 11em;
+    // }
+    // @include respond-to(600) {
+    //     font-size: 14em;
+    // }
+    // @include respond-to(660) {
+    //     font-size: 16em;
+    // }
+    // @include respond-to(768) {
+    //     font-size: 18em;
+    // }
+    // @include respond-to(800) {
+    //     font-size: 20em;
+    // }
+    // @include respond-to(992) {
+    //     font-size: 25em;
+    // }
+    // @include respond-to(1280) {
+    //     font-size: 26em;
+    // }
+}
+.sep {
+    //color: lighten($tymer, 30%);
+    background: url(../img/sep.svg) center center no-repeat;
+    width: 4%;
+    background-size:100%;
+}
+@-webkit-keyframes blinker {
+   from { opacity: 1.0; }
+   to { opacity: 0.0; }
+}
+.paused {
+    -webkit-animation-name: blinker;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    -webkit-animation-duration: 1s;
+}
+
+
+/*-----------------------------------------------
+$MISC
+-----------------------------------------------*/
+
+/* HIGHLIGHTED TEXT * These selection rule sets have to be separate. */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+/*-----------------------------------------------
+$CLASSES
+-----------------------------------------------*/
+.dark {
+    background-color: $dark;
+    color: $light;
+}
+.light {
+    background-color: $light;
+    color: $dark;
+}
+
+/*--- BUTTONS ---*/
+.btn {
+    background-color: $btn;
+    color: #FFF;
+    line-height: 50px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0;
+    display: block;
+    padding: 0;
+    margin: 0;
+    @include box-sizing(border);
+    @include transition(background-color);
+    text-shadow: 0 -1px 0 darken($btn, 10%);
+    width: 100%;
+    @include respond-to(600) {
+        height: 75px;
+        line-height: 75px;
+    }
+    @include respond-to(600) {
+        font-size: 1.5em;
+    }
+}
+.btn:hover,
+.btn:active {
+    background-color: darken($btn, 10%);
+    text-shadow: 0 -1px 0 darken($btn, 20%);
+    @include transition(background-color);
+}
+.btn.control,
+.btn.clear,
+.btn.start {
+    float: left;
+}
+.btn.control {
+    width: 50%;
+}
+.btn.clear {
+    background-color: $btn-clr;
+    text-shadow: 0 -1px 0 darken($btn-clr, 10%);
+}
+.btn.clear:hover,
+.btn.clear:active {
+    background-color: darken($btn-clr, 10%);
+    text-shadow: 0 -1px 0 darken($btn-clr, 20%);
+}
+.spinner {
+    color: #FFF;
+    font-size: 2em;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+    width: 15%;
+    float: left;
+    @include box-sizing(border);
+    @include transition(background-color);
+    @include respond-to(600) {
+        height: 75px;
+        line-height: 75px;
+    }
+    @include respond-to(992) {
+        font-size: 2.5em;
+    }
+}
+.spinner:hover {
+    @include transition(background-color);
+}
+.set-mins .spinner {
+    background-color: $spinner-mins;
+    text-shadow: 0 -1px 0 darken($spinner-mins, 10%);
+}
+.set-mins .spinner:hover,
+.set-mins .spinner:active {
+    background-color: darken($spinner-mins, 10%);
+    text-shadow: 0 -1px 0 darken($spinner-mins, 20%);
+}
+.set-secs .spinner {
+    background-color: $spinner-secs;
+    text-shadow: 0 -1px 0 darken($spinner-secs, 10%);
+}
+.set-secs .spinner:hover,
+.set-secs .spinner:active {
+    background-color: darken($spinner-secs, 10%);
+    text-shadow: 0 -1px 0 darken($spinner-secs, 20%);
+}
+.dismiss {
+    color: $light;
+    background-color: #999;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    padding: 0 0 0 10px;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 -1px 0 darken(#999, 10%);
+    text-transform: uppercase;
+}
+.dismiss:after {
+    content: 'x';
+    background-color: #333;
+    display: block;
+    width: 50px;
+    height: 50px;
+    float: right;
+    margin-left: 10px;
+}
+
+/*--- CLEARFIX ---*/
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/*--- HIDE ---*/
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
