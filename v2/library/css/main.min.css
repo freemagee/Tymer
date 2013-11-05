@@ -1,1 +1,809 @@
-html,body{height:100%}body{font:400 16px/1.5 'Open Sans', sans-serif;background:#222;color:#666}@media all and (max-device-width: 480px){html,body{-webkit-text-size-adjust:none}}@media all and (min-device-width: 768px) and (max-device-width: 1024px){html,body{-webkit-text-size-adjust:none}}.container{margin:0 auto}.content{max-width:400px;margin:0 auto;padding:3em 1em}.logo-icon{display:block;width:144px;height:144px;margin:0 auto 2em}h1,.alpha{font-family:'Oswald', sans-serif;font-size:1.5em;text-transform:uppercase;margin:0 0 1em 0;padding:0;color:#e8e8e8}@media (min-width: 600px){h1,.alpha{font-size:2em}}h2{margin:0;padding:0;color:#e8e8e8}p{margin:0 0 1.5em 0;padding:0;color:#e8e8e8}.elaborate{display:none}a{text-decoration:none;color:#666}a:hover,a:active{color:#b3b3b3;text-shadow:0 1px 1px #000}img{vertical-align:middle}figure{background-color:#e8e8e8;margin-bottom:1.5em}figure img{max-width:100%}figcaption{text-align:center;padding:0.5em;color:#333;font-size:0.875em}.ir{background-color:transparent;border:0;overflow:hidden;*text-indent:-9999px}.ir:before{content:"";display:block;width:0;height:150%}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}input[type="number"]{background-color:#fffcdc;color:#666;padding:0;border:0;font-size:1.25em;width:20%;height:50px;line-height:50px;float:left;text-align:center;-webkit-appearance:none;border-radius:0}@media (min-width: 600px){input[type="number"]{height:75px;line-height:75px;font-size:1.5em}}input[type="number"]:focus{background-color:#fffac3;color:#595959;outline:0}.message{cursor:pointer;position:absolute;font-weight:700;font-size:1.4em;text-align:center;color:#444;list-style:none;width:100%;height:100%;z-index:99;visibility:hidden;opacity:0;-moz-transition-duration:0.3s;-webkit-transition-duration:0.3s;transition-duration:0.3s;-moz-transition-property:all;-webkit-transition-property:all;transition-property:all;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}@media (min-width: 600px){.message{font-size:2em}}.message:before{content:'';display:inline-block;height:100%;vertical-align:middle;margin-right:-0.25em}.message-text{display:inline-block;vertical-align:middle;width:300px;height:auto;visibility:hidden;-moz-transition-duration:0.3s;-webkit-transition-duration:0.3s;transition-duration:0.3s;-moz-transition-property:all;-webkit-transition-property:all;transition-property:all;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out;text-shadow:0 -1px 0 #222}@media (min-width: 600px){.message-text{width:600px}}.show{opacity:1;visibility:visible}.message-text{-webkit-transform:scale(0.7);-moz-transform:scale(0.7);-ms-transform:scale(0.7);transform:scale(0.7);opacity:0;-moz-transition-duration:0.3s;-webkit-transition-duration:0.3s;transition-duration:0.3s;-moz-transition-property:all;-webkit-transition-property:all;transition-property:all;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}.show .message-text{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);visibility:visible;opacity:1}.complete{background:#b7fd93}.error{background:#fd93b7}.tymer{cursor:pointer;opacity:0;visibility:hidden;-moz-transition-duration:0.5s;-webkit-transition-duration:0.5s;transition-duration:0.5s;-moz-transition-property:opacity;-webkit-transition-property:opacity;transition-property:opacity;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}.tymer-controls{width:100%;height:50px;position:relative;overflow:hidden}@media (min-width: 600px){.tymer-controls{height:75px}}.tymer.active{visibility:visible;opacity:1}.tymer-set,.tymer-clear{position:absolute;width:100%;-moz-transition-duration:0.5s;-webkit-transition-duration:0.5s;transition-duration:0.5s;-moz-transition-property:left;-webkit-transition-property:left;transition-property:left;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}.tymer-set{background:#C0C0C0;line-height:50px;left:-100%}.tymer-clear{left:100%}.tymer-set.active,.tymer-clear.active{left:0}.tymer span{float:left;display:block;height:100%;text-align:center;overflow:hidden}.number{color:#333;font-family:'Oswald', monospace;font-weight:700;width:48%;-webkit-font-smoothing:antialiased}.sep{background:url(../img/sep.svg) center center no-repeat;width:4%;background-size:100%}@-webkit-keyframes blinker{from{opacity:1.0}to{opacity:0.0}}.paused{-webkit-animation-name:blinker;-webkit-animation-iteration-count:infinite;-webkit-animation-timing-function:cubic-bezier(1, 0, 0, 1);-webkit-animation-duration:1s}::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}.dark{background-color:#333;color:#e8e8e8}.light{background-color:#e8e8e8;color:#333}.btn{background-color:#666;color:#FFF;line-height:50px;font-weight:700;text-align:center;text-transform:uppercase;border:0;display:block;padding:0;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-moz-transition-duration:0.5s;-webkit-transition-duration:0.5s;transition-duration:0.5s;-moz-transition-property:background-color;-webkit-transition-property:background-color;transition-property:background-color;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out;text-shadow:0 -1px 0 #4d4d4d;width:100%}@media (min-width: 600px){.btn{height:75px;line-height:75px}}@media (min-width: 600px){.btn{font-size:1.5em}}.btn:hover,.btn:active{background-color:#4d4d4d;text-shadow:0 -1px 0 #333;-moz-transition-duration:0.5s;-webkit-transition-duration:0.5s;transition-duration:0.5s;-moz-transition-property:background-color;-webkit-transition-property:background-color;transition-property:background-color;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}.btn.control,.btn.clear,.btn.start{float:left}.btn.control{width:50%}.btn.clear{background-color:#b22a16;text-shadow:0 -1px 0 #851f10}.btn.clear:hover,.btn.clear:active{background-color:#851f10;text-shadow:0 -1px 0 #57150b}.spinner{color:#FFF;font-size:2em;border:0;margin:0;padding:0;height:50px;line-height:50px;width:15%;float:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-moz-transition-duration:0.5s;-webkit-transition-duration:0.5s;transition-duration:0.5s;-moz-transition-property:background-color;-webkit-transition-property:background-color;transition-property:background-color;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}@media (min-width: 600px){.spinner{height:75px;line-height:75px}}@media (min-width: 992px){.spinner{font-size:2.5em}}.spinner:hover{-moz-transition-duration:0.5s;-webkit-transition-duration:0.5s;transition-duration:0.5s;-moz-transition-property:background-color;-webkit-transition-property:background-color;transition-property:background-color;-moz-transition-timing-function:ease-in-out;-webkit-transition-timing-function:ease-in-out;transition-timing-function:ease-in-out}.set-mins .spinner{background-color:#009fe3;text-shadow:0 -1px 0 #007bb0}.set-mins .spinner:hover,.set-mins .spinner:active{background-color:#007bb0;text-shadow:0 -1px 0 #00587d}.set-secs .spinner{background-color:#00b035;text-shadow:0 -1px 0 #007d26}.set-secs .spinner:hover,.set-secs .spinner:active{background-color:#007d26;text-shadow:0 -1px 0 #004a16}.dismiss{color:#e8e8e8;background-color:#999;border:none;position:absolute;top:0;right:0;width:auto;padding:0 0 0 10px;display:block;height:50px;line-height:50px;font-size:16px;font-weight:700;text-shadow:0 -1px 0 gray;text-transform:uppercase}.dismiss:after{content:'x';background-color:#333;display:block;width:50px;height:50px;float:right;margin-left:10px}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}.clearfix{*zoom:1}.hidden{display:none !important;visibility:hidden}.visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.invisible{visibility:hidden}
+/*-----------------------------------------------
+$SASS VARIABLES
+-----------------------------------------------*/
+/*-----------------------------------------------
+$MIXINS
+-----------------------------------------------*/
+/*-----------------------------------------------
+$MAIN
+-----------------------------------------------*/
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: 400 16px/1.5 'Open Sans', sans-serif;
+  background: #222;
+  color: #666;
+}
+
+@media all and (max-device-width: 480px) {
+  html, body {
+    -webkit-text-size-adjust: none;
+  }
+}
+@media all and (min-device-width: 768px) and (max-device-width: 1024px) {
+  html, body {
+    -webkit-text-size-adjust: none;
+  }
+}
+/*-----------------------------------------------
+$STRUCTURE
+-----------------------------------------------*/
+.container {
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 3em 1em;
+}
+@media (min-width: 660px) {
+  .content {
+    max-width: 600px;
+  }
+}
+
+/*-----------------------------------------------
+$LOGO
+-----------------------------------------------*/
+.logo-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1em;
+}
+@media (min-width: 600px) {
+  .logo-icon {
+    width: 144px;
+    height: 144px;
+    margin: 0 auto 2em;
+  }
+}
+
+/*-----------------------------------------------
+$TYPE
+-----------------------------------------------*/
+h1, .alpha {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin: 0 0 1em 0;
+  padding: 0;
+  color: #e8e8e8;
+}
+@media (min-width: 600px) {
+  h1, .alpha {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+}
+@media (min-width: 660px) {
+  h1, .alpha {
+    font-size: 2.5em;
+  }
+}
+
+h2 {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  color: #e8e8e8;
+}
+@media (min-width: 600px) {
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+p {
+  margin: 0 0 1.5em 0;
+  padding: 0;
+  color: #e8e8e8;
+}
+@media (min-width: 600px) {
+  p {
+    font-size: 1.4em;
+  }
+}
+
+.elaborate {
+  display: none;
+}
+
+/*-----------------------------------------------
+$LISTS
+-----------------------------------------------*/
+ul, ol {
+  color: #e8e8e8;
+  font-style: italic;
+  margin: 0 0 1.5em 0;
+  padding: 0;
+}
+@media (min-width: 600px) {
+  ul, ol {
+    font-size: 1.2em;
+  }
+}
+
+/*-----------------------------------------------
+$LINKS
+-----------------------------------------------*/
+a {
+  text-decoration: none;
+  color: #00b035;
+}
+a:hover, a:active {
+  color: #4aff81;
+  text-shadow: 0 1px 1px #000;
+}
+
+/*-----------------------------------------------
+$IMAGES
+-----------------------------------------------*/
+img {
+  vertical-align: middle;
+}
+
+/*--- FIGURES ---*/
+figure {
+  background-color: #111;
+  margin-bottom: 1.5em;
+}
+figure img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+figcaption {
+  background: #e8e8e8;
+  text-align: center;
+  padding: 0.5em;
+  color: #333333;
+  font-size: 0.875em;
+}
+
+/*--- IMAGE REPLACEMENT ---*/
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+/*-----------------------------------------------
+$FORMS
+-----------------------------------------------*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  background-color: #fffcdc;
+  color: #666666;
+  padding: 0;
+  border: 0;
+  font-size: 1.25em;
+  width: 20%;
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  text-align: center;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+@media (min-width: 600px) {
+  input[type="number"] {
+    height: 75px;
+    line-height: 75px;
+    font-size: 1.5em;
+  }
+}
+
+input[type="number"]:focus {
+  background-color: #fffac3;
+  color: #595959;
+  outline: 0;
+}
+
+button:focus {
+  outline: none;
+}
+
+/*-----------------------------------------------
+$MESSAGES
+-----------------------------------------------*/
+.message {
+  cursor: pointer;
+  position: absolute;
+  font-weight: 700;
+  text-align: center;
+  color: #e8e8e8;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
+/* Ref: http://css-tricks.com/centering-in-the-unknown/ */
+/* The ghost, nudged to maintain perfect centering */
+.message:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */
+.message-text {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
+  height: auto;
+  visibility: hidden;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+  font-size: 1.5em;
+}
+@media (min-width: 600px) {
+  .message-text {
+    width: 550px;
+  }
+}
+@media (min-width: 768px) {
+  .message-text {
+    font-size: 2em;
+    width: 700px;
+  }
+}
+@media (min-width: 992px) {
+  .message-text {
+    width: 900px;
+  }
+}
+
+.complete {
+  text-shadow: 0 -1px 0 #236402;
+  background: #46c804;
+}
+
+.error {
+  background: #fc6196;
+  text-shadow: 0 -1px 0 #f20556;
+}
+
+/*-----------------------------------------------
+$HELP
+-----------------------------------------------*/
+.help-panel {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  cursor: default;
+  z-index: 100;
+  background: #e8e8e8;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.help-panel h1, .help-panel h2, .help-panel p, .help-panel ul {
+  color: #333333;
+}
+.help-panel ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* The ghost, nudged to maintain perfect centering */
+.help-panel:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  /* Adjusts for spacing */
+}
+
+.help-text {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
+  height: auto;
+  visibility: hidden;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+}
+@media (min-width: 600px) {
+  .help-text {
+    width: 550px;
+  }
+}
+@media (min-width: 768px) {
+  .help-text {
+    width: 700px;
+  }
+}
+@media (min-width: 992px) {
+  .help-text {
+    width: 900px;
+  }
+}
+
+.help {
+  color: #e8e8e8;
+  background-color: #999;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 0 0 0 10px;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 -1px 0 gray;
+  text-transform: uppercase;
+}
+.help:focus {
+  outline: none;
+}
+.help:after {
+  content: '?';
+  background-color: #333;
+  display: block;
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin-left: 10px;
+}
+
+/*-----------------------------------------------
+$TYMER
+-----------------------------------------------*/
+.tymer {
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.tymer span {
+  float: left;
+  display: block;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tymer.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tymer-controls {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 600px) {
+  .tymer-controls {
+    height: 75px;
+  }
+}
+
+.tymer-set,
+.tymer-clear {
+  position: absolute;
+  width: 100%;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-property: left;
+  -webkit-transition-property: left;
+  transition-property: left;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
+.tymer-set {
+  background: #C0C0C0;
+  line-height: 50px;
+  left: -100%;
+}
+
+.tymer-clear {
+  left: 100%;
+}
+
+.tymer-set.active,
+.tymer-clear.active {
+  left: 0;
+}
+
+.number {
+  color: #333333;
+  font-family: 'Oswald', monospace;
+  font-weight: 700;
+  width: 48%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sep {
+  background: url(../img/sep.svg) center center no-repeat;
+  width: 4%;
+  background-size: 100%;
+}
+
+@-webkit-keyframes blinker {
+  from {
+    opacity: 1.0;
+  }
+
+  to {
+    opacity: 0.0;
+  }
+}
+
+.paused {
+  -webkit-animation-name: blinker;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
+  -webkit-animation-duration: 1s;
+}
+
+/*-----------------------------------------------
+$MISC
+-----------------------------------------------*/
+/* HIGHLIGHTED TEXT * These selection rule sets have to be separate. */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*-----------------------------------------------
+$CLASSES
+-----------------------------------------------*/
+.dark {
+  background-color: #333333;
+  color: #e8e8e8;
+}
+
+.light {
+  background-color: #e8e8e8;
+  color: #333333;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+.show .message-text,
+.show .help-text {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--- BUTTONS ---*/
+.btn {
+  background-color: #666666;
+  color: #FFF;
+  line-height: 50px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  border: 0;
+  display: block;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  text-shadow: 0 -1px 0 #4d4d4d;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .btn {
+    height: 75px;
+    line-height: 75px;
+  }
+}
+@media (min-width: 600px) {
+  .btn {
+    font-size: 1.5em;
+  }
+}
+.btn:hover, .btn:active {
+  background-color: #4d4d4d;
+  text-shadow: 0 -1px 0 #333333;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.btn:focus {
+  outline: none;
+}
+.btn .control,
+.btn .clear,
+.btn .start {
+  float: left;
+}
+.btn .control {
+  width: 50%;
+}
+
+.btn.clear {
+  background-color: #b22a16;
+  text-shadow: 0 -1px 0 #851f10;
+}
+
+.btn.clear:hover,
+.btn.clear:active {
+  background-color: #851f10;
+  text-shadow: 0 -1px 0 #57150b;
+}
+
+.spinner {
+  color: #FFF;
+  font-size: 2em;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  line-height: 50px;
+  width: 15%;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+@media (min-width: 600px) {
+  .spinner {
+    height: 75px;
+    line-height: 75px;
+    font-size: 2.25em;
+  }
+}
+@media (min-width: 992px) {
+  .spinner {
+    font-size: 2.5em;
+  }
+}
+.spinner:hover {
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -moz-transition-property: background-color;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
+.set-mins .spinner {
+  background-color: #009fe3;
+  text-shadow: 0 -1px 0 #007bb0;
+}
+
+.set-mins .spinner:hover,
+.set-mins .spinner:active {
+  background-color: #007bb0;
+  text-shadow: 0 -1px 0 #00587d;
+}
+
+.set-secs .spinner {
+  background-color: #00b035;
+  text-shadow: 0 -1px 0 #007d26;
+}
+
+.set-secs .spinner:hover,
+.set-secs .spinner:active {
+  background-color: #007d26;
+  text-shadow: 0 -1px 0 #004a16;
+}
+
+.dismiss {
+  color: #e8e8e8;
+  background-color: #999;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 0 0 0 10px;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow: 0 -1px 0 gray;
+  text-transform: uppercase;
+}
+.dismiss:after {
+  content: 'x';
+  background-color: #333;
+  display: block;
+  width: 50px;
+  height: 50px;
+  float: right;
+  margin-left: 10px;
+}
+
+/*--- CLEARFIX ---*/
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}
+
+/*--- HIDE ---*/
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}

@@ -7,6 +7,7 @@ New UI
 Greater screen support
 Font size optimisation
 Touch enabled
+HTML5 Audio - Alarm on completion
 
 ###Summary
 

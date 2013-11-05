@@ -4,6 +4,12 @@ $(document).ready(function() {
     $('.tymer').addClass('active');
     $('.tymer-set').addClass('active');
 
+    // Trigger help panel
+    $('.js-help').on('click', function() {
+        $('.help-panel').addClass('show');
+        dismiss( $('.help-panel') );
+    });
+
     // Monitor changes to minutes
     $('.js-minutes').on('change', function() {
         var setMinutes = leadingZero($(this).val());
@@ -187,7 +193,8 @@ $(document).ready(function() {
     function allDone() {
         $('.message-text').text('Tymer Completed');
         $('.message').addClass('complete').addClass('show');
-        dismiss();
+        dismiss( $('.message') );
+        startAlertSound();
         clearTymer();
     }
 
@@ -204,32 +211,36 @@ $(document).ready(function() {
     }
 
     function triggerError(type) {
-        var msg = 'There has been an error';
+        var msg = 'There has been a technical error with Tymer. Sorry for the inconvenience.';
 
         if (type === 0) {
-            msg = 'Please enter a time';
+            msg = 'Please enter a time. Format [MM:SS].';
         }
         else if (type === 1) {
             msg = 'Maximum Tymer is 60 minutes';
         }
         $('.message-text').text(msg);
         $('.message').addClass('error').addClass('show');
-        dismiss();
+        dismiss( $('.message') );
         clearInterval(intervalId);
     }
 
     // Dismiss full screen messages
-    function dismiss() {
-        var message = $('.message');
+    function dismiss(message) {
+        //var message = $('.message');
 
-        //message.append('<span class="dismiss">Dismiss</span>');
         message.click(function(e) {
-            $(this).removeClass('show');
+            $(this).removeClass('show').removeClass('error').removeClass('complete');
+            $(this).find('.message-text').empty();
+            removeAlertSound();
+
             e.preventDefault();
         });
         $('html').on('keyup', function(kp) {
             if( kp.keyCode === 27 ) {
-                message.removeClass('show');
+                message.removeClass('show').removeClass('error').removeClass('complete');
+                //$('.message-text')
+                removeAlertSound();
             }
         });
     }
@@ -260,6 +271,25 @@ $(document).ready(function() {
         }
 
         return false;
+    }
+
+    // Audio effects
+    function startAlertSound() {
+        //<audio src="library/audio/alert.wav" autoplay loop>
+           //<!-- add your fallback solution here -->
+        //</audio>
+        $('<audio id="alert-sound"></audio>').prependTo('body');
+        $('#alert-sound').attr({
+            //'src' : 'library/audio/alert.wav',
+            'autoplay' : true,
+            'loop' : true
+        });
+        $('<source src="library/audio/alert.wav" type="audio/wav"><source src="library/audio/alert.mp3" type="audio/mp3">').prependTo('#alert-sound');
+    }
+    function removeAlertSound() {
+        if ($("#alert-sound").length > 0) {
+            $("#alert-sound").remove();
+        }
     }
 
     // Adds CSS to <head> for responsive font size/line-height on Tymer spans

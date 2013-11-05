@@ -1,9 +1,10 @@
 /*-----------------------------------------------
 $SASS VARIABLES
 -----------------------------------------------*/
-$complete: rgb(183,253,147);
-$error: rgb(253,147,183);
+$complete: rgb(70,200,4);
+$error: rgb(252,97,150);
 $btn: #666;
+$link: rgb(0,176,53);
 $spinner-secs: rgb(0,176,53);
 $spinner-mins: rgb(0,159,227);
 $btn-clr: rgb(178,42,22);
@@ -97,6 +98,9 @@ $STRUCTURE
     max-width: 400px;
     margin: 0 auto;
     padding: 3em 1em;
+    @include respond-to(660) {
+        max-width: 600px;
+    }
 }
 
 /*-----------------------------------------------
@@ -104,9 +108,14 @@ $LOGO
 -----------------------------------------------*/
 .logo-icon {
     display: block;
-    width: 144px;
-    height: 144px;
-    margin: 0 auto 2em;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1em;
+    @include respond-to(600) {
+        width: 144px;
+        height: 144px;
+        margin: 0 auto 2em;
+    }
 }
 
 
@@ -122,20 +131,45 @@ h1, .alpha {
     color: $light;
     @include respond-to(600) {
         font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+    @include respond-to(660) {
+        font-size: 2.5em;
     }
 }
 h2 {
+    font-size: 1em;
     margin: 0;
     padding: 0;
     color: $light;
+    @include respond-to(600) {
+        font-size: 1.5em;
+    }
 }
 p {
     margin: 0 0 1.5em 0;
     padding: 0;
     color: $light;
+    @include respond-to(600) {
+        font-size: 1.4em;
+    }
 }
 .elaborate {
     display: none;
+}
+
+/*-----------------------------------------------
+$LISTS
+-----------------------------------------------*/
+ul, ol {
+    color: $light;
+    font-style: italic;
+    margin: 0 0 1.5em 0;
+    padding: 0;
+
+    @include respond-to(600) {
+        font-size: 1.2em;
+    }
 }
 
 /*-----------------------------------------------
@@ -143,12 +177,13 @@ $LINKS
 -----------------------------------------------*/
 a {
     text-decoration: none;
-    color: $btn;
-}
-a:hover,
-a:active {
-    color: lighten($btn, 30%);
-    text-shadow: 0 1px 1px #000;
+    color: $link;
+
+    &:hover,
+    &:active {
+        color: lighten($link, 30%);
+        text-shadow: 0 1px 1px #000;
+    }
 }
 
 /*-----------------------------------------------
@@ -160,13 +195,17 @@ img {
 
 /*--- FIGURES ---*/
 figure {
-    background-color: $light;
+    background-color: #111;
     margin-bottom: 1.5em;
-}
-figure img {
-    max-width: 100%;
+
+    img {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+    }
 }
 figcaption {
+    background: $light;
     text-align: center;
     padding: 0.5em;
     color: $dark;
@@ -178,8 +217,6 @@ figcaption {
     background-color: transparent;
     border: 0;
     overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
 }
 .ir:before {
     content: "";
@@ -221,6 +258,9 @@ input[type="number"]:focus {
     color: darken($input-color, 5%);
     outline: 0;
 }
+button:focus {
+    outline: none;
+}
 
 
 /*-----------------------------------------------
@@ -230,19 +270,15 @@ $MESSAGES
     cursor: pointer;
     position: absolute;
     font-weight: 700;
-    font-size: 1.4em;
     text-align: center;
-    color: #444;
-    list-style: none;
+    color: $light;
     width: 100%;
     height: 100%;
     z-index: 99;
     visibility: hidden;
     opacity: 0;
+    overflow: hidden;
     @include transition(all, 0.3);
-    @include respond-to(600) {
-        font-size: 2em;
-    }
 }
 
 /* Ref: http://css-tricks.com/centering-in-the-unknown/ */
@@ -265,42 +301,128 @@ $MESSAGES
     height: auto;
     visibility: hidden;
     @include transition(all, 0.3);
-    @include respond-to(600) {
-        width: 600px;
-    }
-    text-shadow: 0 -1px 0 #222;
-}
-
-.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.message-text {
     -webkit-transform: scale(0.7);
     -moz-transform: scale(0.7);
     -ms-transform: scale(0.7);
     transform: scale(0.7);
     opacity: 0;
-    @include transition(all, 0.3);
-}
+    font-size: 1.5em;
 
-.show .message-text {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
-    visibility: visible;
-    opacity: 1;
+    @include respond-to(600) {
+        width: 550px;
+    }
+    @include respond-to(768) {
+        font-size: 2em;
+        width: 700px;
+    }
+    @include respond-to(992) {
+        width: 900px;
+    }
 }
-
+// .show .message-text {
+//     -webkit-transform: scale(1);
+//     -moz-transform: scale(1);
+//     -ms-transform: scale(1);
+//     transform: scale(1);
+//     visibility: visible;
+//     opacity: 1;
+// }
 .complete {
-    //color: darken($complete, 60%);
+    text-shadow: 0 -1px 0 darken($complete, 20%);
     background: $complete;
+    //color: darken($complete, 50%);
 }
 .error {
-    //color: darken($error, 60%);
     background: $error;
+    text-shadow: 0 -1px 0 darken($error, 20%);
+    //color: lighten($error, 30%);
+}
+
+
+/*-----------------------------------------------
+$HELP
+-----------------------------------------------*/
+.help-panel {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    cursor: default;
+    z-index: 100;
+    background: $light;
+    @include transition(all, 0.3);
+
+    h1, h2, p, ul {
+        color: $dark;
+    }
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}
+/* The ghost, nudged to maintain perfect centering */
+.help-panel:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+.help-text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    height: auto;
+    visibility: hidden;
+    @include transition(all, 0.3);
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0;
+
+    @include respond-to(600) {
+        width: 550px;
+    }
+    @include respond-to(768) {
+        width: 700px;
+    }
+    @include respond-to(992) {
+        width: 900px;
+    }
+}
+.help {
+    color: $light;
+    background-color: #999;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    padding: 0 0 0 10px;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 -1px 0 darken(#999, 10%);
+    text-transform: uppercase;
+
+    &:focus {
+        outline: none;
+    }
+    &:after {
+        content: '?';
+        background-color: #333;
+        display: block;
+        width: 50px;
+        height: 50px;
+        float: right;
+        margin-left: 10px;
+    }
 }
 
 
@@ -312,6 +434,18 @@ $TYMER
     opacity: 0;
     visibility: hidden;
     @include transition(opacity);
+
+    span {
+        float: left;
+        display: block;
+        height: 100%;
+        text-align: center;
+        overflow: hidden;
+    }
+}
+.tymer.active {
+    visibility: visible;
+    opacity: 1;
 }
 .tymer-controls {
     width: 100%;
@@ -322,15 +456,10 @@ $TYMER
         height: 75px;
     }
 }
-.tymer.active {
-    visibility: visible;
-    opacity: 1;
-}
 .tymer-set,
 .tymer-clear {
     position: absolute;
     width: 100%;
-    //max-width: 1500px;
     @include transition(left);
 }
 .tymer-set {
@@ -345,47 +474,14 @@ $TYMER
 .tymer-clear.active {
     left: 0;
 }
-.tymer span {
-    float: left;
-    display: block;
-    height: 100%;
-    text-align: center;
-    overflow: hidden;
-}
 .number {
     color: $tymer;
     font-family: 'Oswald', monospace;
     font-weight: 700;
     width: 48%;
     -webkit-font-smoothing: antialiased;
-    // font-size: 7em;
-    // @include respond-to(370) {
-    //     font-size: 9em;
-    // }
-    // @include respond-to(480) {
-    //     font-size: 11em;
-    // }
-    // @include respond-to(600) {
-    //     font-size: 14em;
-    // }
-    // @include respond-to(660) {
-    //     font-size: 16em;
-    // }
-    // @include respond-to(768) {
-    //     font-size: 18em;
-    // }
-    // @include respond-to(800) {
-    //     font-size: 20em;
-    // }
-    // @include respond-to(992) {
-    //     font-size: 25em;
-    // }
-    // @include respond-to(1280) {
-    //     font-size: 26em;
-    // }
 }
 .sep {
-    //color: lighten($tymer, 30%);
     background: url(../img/sep.svg) center center no-repeat;
     width: 4%;
     background-size:100%;
@@ -430,6 +526,20 @@ $CLASSES
     background-color: $light;
     color: $dark;
 }
+.show {
+    opacity: 1;
+    visibility: visible;
+
+    .message-text,
+    .help-text {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        visibility: visible;
+        opacity: 1;
+    }
+}
 
 /*--- BUTTONS ---*/
 .btn {
@@ -454,20 +564,26 @@ $CLASSES
     @include respond-to(600) {
         font-size: 1.5em;
     }
-}
-.btn:hover,
-.btn:active {
-    background-color: darken($btn, 10%);
-    text-shadow: 0 -1px 0 darken($btn, 20%);
-    @include transition(background-color);
-}
-.btn.control,
-.btn.clear,
-.btn.start {
-    float: left;
-}
-.btn.control {
-    width: 50%;
+    &:hover,
+    &:active {
+        background-color: darken($btn, 10%);
+        text-shadow: 0 -1px 0 darken($btn, 20%);
+        @include transition(background-color);
+    }
+    &:focus {
+        outline: none;
+    }
+
+    .control,
+    .clear,
+    .start {
+        float: left;
+    }
+
+    .control {
+        width: 50%;
+    }
+
 }
 .btn.clear {
     background-color: $btn-clr;
@@ -493,13 +609,14 @@ $CLASSES
     @include respond-to(600) {
         height: 75px;
         line-height: 75px;
+        font-size: 2.25em;
     }
     @include respond-to(992) {
         font-size: 2.5em;
     }
-}
-.spinner:hover {
-    @include transition(background-color);
+    &:hover {
+        @include transition(background-color);
+    }
 }
 .set-mins .spinner {
     background-color: $spinner-mins;
@@ -535,15 +652,16 @@ $CLASSES
     font-weight: 700;
     text-shadow: 0 -1px 0 darken(#999, 10%);
     text-transform: uppercase;
-}
-.dismiss:after {
-    content: 'x';
-    background-color: #333;
-    display: block;
-    width: 50px;
-    height: 50px;
-    float: right;
-    margin-left: 10px;
+
+    &:after {
+        content: 'x';
+        background-color: #333;
+        display: block;
+        width: 50px;
+        height: 50px;
+        float: right;
+        margin-left: 10px;
+    }
 }
 
 /*--- CLEARFIX ---*/
@@ -578,7 +696,6 @@ $CLASSES
 .clearfix {
     *zoom: 1;
 }
-
 
 /*--- HIDE ---*/
 

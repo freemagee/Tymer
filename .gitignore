@@ -3,4 +3,5 @@ _assets/
 _serverFiles/
 .DS_Store
 .scssc
-library/.sass-cache/
+v1/library/.sass-cache/
+v2/library/.sass-cache/
