@@ -3,14 +3,53 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Tymer - Free online countdown timer</title>
+        <title>Tymer | Free online countdown timer | Simple timer</title>
         <meta name="description" content="Tymer is an online countdown timer that is free &amp; easy to use on any device.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
         <link href='http://fonts.googleapis.com/css?family=Oswald:700|Open+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="library/css/normalize.min.css">
         <link rel="stylesheet" href="library/css/main.min.css">
         <link rel="icon" href="favicon.png" type="image/png">
+    </head>
+    <body class="light">
+
+        <div class="container">
+            <div class="tymer">
+                <span class="number mins">00</span>
+                <span class="sep"></span>
+                <span class="number secs">00</span>
+            </div>
+        </div>
+
+        <div class="tymer-controls">
+            <div class="tymer-set">
+                <div class="set-mins">
+                    <button type="button" class="spinner minus js-mins-minus">&ndash;</button>
+                    <input class="inline js-minutes" type="number" name="minutes" value="00" placeholder="MM">
+                    <button type="button" class="spinner plus js-mins-plus">+</button>
+                </div>
+                <div class="set-secs">
+                    <button type="button" class="spinner minus js-secs-minus">&ndash;</button>
+                    <input class="inline js-seconds" type="number" name="seconds" value="00" placeholder="SS">
+                    <button type="button" class="spinner plus js-secs-plus">+</button>
+                </div>
+            </div>
+
+            <div class="tymer-clear">
+                <button type="button" class="btn clear js-clear">Clear</button>
+            </div>
+        </div>
+
+        <button class="help js-help">Help</button>
+
+        <div class="message">
+            <button class="dismiss">Dismiss</button>
+            <span class="message-text"></span>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="library/js/vendor/jquery-2.0.0.min.js"><\/script>')</script>
+        <script src="library/js/main.min.js"></script>
         <script type="text/javascript">
 
           var _gaq = _gaq || [];
@@ -24,60 +63,6 @@
           })();
 
         </script>
-    </head>
-    <body class="light">
-
-        <button class="help js-help">Help</button>
-        <div class="help-panel">
-            <button class="dismiss">Dismiss</button>
-            <div class="help-text">
-                <img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon">
-                <h1>Super Simple Online Timer</h1>
-                <p>Tymer is mobile optimised and supports a wide range of devices. Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p>
-                <ul>
-                    <li>Supports a countdown up to one hour - [MM:SS]</li>
-                    <li>Click anywhere to start countdown</li>
-                    <li>Alarm sounds when Tymer has completed</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="message">
-            <button class="dismiss">Dismiss</button>
-            <span class="message-text"></span>
-        </div>
-
-        <div class="container">
-            <div class="tymer clearfix">
-                <span class="number mins">00</span>
-                <span class="sep"></span>
-                <span class="number secs">00</span>
-            </div>
-        </div>
-
-        <div class="tymer-controls">
-            <div class="tymer-set clearfix">
-                <div class="set-mins">
-                    <button type="button" class="spinner minus js-mins-minus">&ndash;</button>
-                    <input class="inline js-minutes" type="number" name="minutes" value="00" placeholder="MM">
-                    <button type="button" class="spinner plus js-mins-plus">+</button>
-                </div>
-                <div class="set-secs">
-                    <button type="button" class="spinner minus js-secs-minus">&ndash;</button>
-                    <input class="inline js-seconds" type="number" name="seconds" value="00" placeholder="SS">
-                    <button type="button" class="spinner plus js-secs-plus">+</button>
-                </div>
-            </div>
-
-            <div class="tymer-clear clearfix">
-                <button type="button" class="btn clear js-clear">Clear</button>
-            </div>
-        </div>
-
-        <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="library/js/vendor/jquery-2.0.0.min.js"><\/script>')</script>
-        <script src="library/js/vendor/jquery.countdown.min.js"></script>
-        <script src="library/js/main.min.js"></script>
 
     </body>
 </html>

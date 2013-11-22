@@ -1,13 +1,17 @@
-$(document).ready(function() {
+function init() {
     var intervalId;
 
     $('.tymer').addClass('active');
-    $('.tymer-set').addClass('active');
+    $('.tymer-controls').addClass('active');
 
     // Trigger help panel
     $('.js-help').on('click', function() {
-        $('.help-panel').addClass('show');
-        dismiss( $('.help-panel') );
+        var helpText = '<img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon"><h1>Simple Free Online Timer</h1><p>Tymer is a mobile optimised countdown timer. Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p><ul><li>Supports a countdown up to one hour - [MM:SS]</li><li>Click anywhere to start countdown</li><li>Alarm sounds when Tymer has completed (PC/MAC only)</li></ul><p>More info about <a href="why.html">Tymer</a>. Built by <a href="http://neilmagee.com">Neil Magee</a>.</p>';
+        //$('.help-panel').addClass('show');
+        //dismiss( $('.help-panel') );
+        $('.message-text').html(helpText);
+        $('.message').addClass('help-panel').addClass('show');
+        dismiss( $('.message') );
     });
 
     // Monitor changes to minutes
@@ -61,7 +65,7 @@ $(document).ready(function() {
             if (validTime(setMinutes,setSeconds)) {
                 var countdownUntil = (setMinutes * 60) + (setSeconds * 1);
 
-                $('.tymer-set').removeClass('active');
+                $('.tymer-set').addClass('inactive');
                 $('.tymer-clear').addClass('active');
                 $('.tymer').countdown({
                     until: countdownUntil,
@@ -205,7 +209,7 @@ $(document).ready(function() {
         $('.number.secs').text('00');
         $('.js-minutes').val('00');
         $('.js-seconds').val('00');
-        $('.tymer-set').addClass('active');
+        $('.tymer-set').removeClass('inactive');
         $('.tymer-clear').removeClass('active');
         $('.js-pause').text('Pause').data('state', false);
     }
@@ -227,19 +231,17 @@ $(document).ready(function() {
 
     // Dismiss full screen messages
     function dismiss(message) {
-        //var message = $('.message');
-
-        message.click(function(e) {
-            $(this).removeClass('show').removeClass('error').removeClass('complete');
-            $(this).find('.message-text').empty();
+        $('.dismiss').click(function(e) {
+            message.attr('class', 'message');
+            message.find('.message-text').empty();
             removeAlertSound();
 
             e.preventDefault();
         });
         $('html').on('keyup', function(kp) {
             if( kp.keyCode === 27 ) {
-                message.removeClass('show').removeClass('error').removeClass('complete');
-                //$('.message-text')
+                message.attr('class', 'message');
+                message.find('.message-text').empty();
                 removeAlertSound();
             }
         });
@@ -345,4 +347,24 @@ $(document).ready(function() {
     $(window).on('resize', function(){
         fit();
     });
+}
+
+$(document).ready(function() {
+    /*-------------------------------------------
+        Defer javascript
+    -------------------------------------------*/
+    // Ref: http://www.techvigil.com/tips-tricks/303/defer-javascript-decrease-pageload-time/
+    function loadJavaScript() {
+        var countdown = document.createElement("script");
+        countdown.src = "library/js/vendor/jquery.countdown.min.js";
+        document.body.appendChild(countdown);
+
+        init();
+    }
+
+    if (window.addEventListener)
+        window.addEventListener("load", loadJavaScript, false);
+    else if (window.attachEvent)
+        window.attachEvent("onload", loadJavaScript);
+    else window.onload = loadJavaScript;
 });
