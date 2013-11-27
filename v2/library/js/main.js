@@ -6,9 +6,7 @@ function init() {
 
     // Trigger help panel
     $('.js-help').on('click', function() {
-        var helpText = '<img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon"><h1>Simple Free Online Timer</h1><p>Tymer is a mobile optimised countdown timer. Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p><ul><li>Supports a countdown up to one hour - [MM:SS]</li><li>Click anywhere to start countdown</li><li>Alarm sounds when Tymer has completed (PC/MAC only)</li></ul><p>More info about <a href="why.html">Tymer</a>. Built by <a href="http://neilmagee.com">Neil Magee</a>.</p>';
-        //$('.help-panel').addClass('show');
-        //dismiss( $('.help-panel') );
+        var helpText = '<img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon"><h2 class="alpha">Simple Free Online Timer</h2><p>Tymer is a mobile optimised countdown timer. Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p><ul><li>Supports a countdown up to one hour - [MM:SS]</li><li>Click anywhere to start countdown</li><li>Alarm sounds when Tymer has completed (PC/MAC only)</li></ul><p>More info about <a href="why.html">Tymer</a>. Built by <a href="http://neilmagee.com">Neil Magee</a>.</p>';
         $('.message-text').html(helpText);
         $('.message').addClass('help-panel').addClass('show');
         dismiss( $('.message') );
@@ -17,7 +15,6 @@ function init() {
     // Monitor changes to minutes
     $('.js-minutes').on('change', function() {
         var setMinutes = leadingZero($(this).val());
-        //console.log($(this).val());
 
         clearInterval(intervalId);
 
@@ -83,10 +80,8 @@ function init() {
             state = !state;
 
             if (state) {
-                //$(this).text('Resume');
                 $(this).countdown('pause').addClass('paused');
             } else {
-                //$(this).text('Pause');
                 $(this).countdown('resume').removeClass('paused');
             }
 
@@ -95,23 +90,6 @@ function init() {
 
         return false;
     });
-
-    // Action to take when user presses 'pause'
-    // $('.js-pause').on('click', function() {
-    //     var state = $(this).data('state');
-
-    //     state = !state;
-
-    //     if (state) {
-    //         $(this).text('Resume');
-    //         $('.tymer').countdown('pause');
-    //     } else {
-    //         $(this).text('Pause');
-    //         $('.tymer').countdown('resume');
-    //     }
-
-    //     $(this).data('state', state);
-    // });
 
     // Action to take when user presses 'Clear'
     $('.js-clear').on('click', function() {
@@ -277,12 +255,8 @@ function init() {
 
     // Audio effects
     function startAlertSound() {
-        //<audio src="library/audio/alert.wav" autoplay loop>
-           //<!-- add your fallback solution here -->
-        //</audio>
         $('<audio id="alert-sound"></audio>').prependTo('body');
         $('#alert-sound').attr({
-            //'src' : 'library/audio/alert.wav',
             'autoplay' : true,
             'loop' : true
         });
@@ -307,17 +281,12 @@ function init() {
         proposedFontWidth = Math.floor( proposedFontHeight / fontHeightFactor ),
         newStyle = optimumFit();
 
-        //console.log('Current Font Width = ' + currentFontWidth + 'px');
-        //console.log('Current Font Height = ' + tymerHeight + 'px');
-        //console.log(fontHeightFactor);
-
         function optimumFit() {
             var optimumFontHeight;
 
             if ( proposedFontWidth < currentFontWidth ) {
                 optimumFontHeight = Math.floor( ( ( proposedFontHeight / 100 ) * 95 ) );
             } else {
-                //console.log(currentFontWidth);
                 if ( ( proposedFontWidth * 4 ) + ( ( proposedFontWidth / 100 )*10 ) > availableTotalWidth ) {
                     optimumFontHeight = (currentFontWidth * fontHeightFactor);
                 } else {
@@ -350,21 +319,5 @@ function init() {
 }
 
 $(document).ready(function() {
-    /*-------------------------------------------
-        Defer javascript
-    -------------------------------------------*/
-    // Ref: http://www.techvigil.com/tips-tricks/303/defer-javascript-decrease-pageload-time/
-    function loadJavaScript() {
-        var countdown = document.createElement("script");
-        countdown.src = "library/js/vendor/jquery.countdown.min.js";
-        document.body.appendChild(countdown);
-
-        init();
-    }
-
-    if (window.addEventListener)
-        window.addEventListener("load", loadJavaScript, false);
-    else if (window.attachEvent)
-        window.attachEvent("onload", loadJavaScript);
-    else window.onload = loadJavaScript;
+    init();
 });

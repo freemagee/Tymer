@@ -746,22 +746,7 @@ $MESSAGES
 $HELP
 -----------------------------------------------*/
 .help-panel {
-    // position: absolute;
-    // left: 0;
-    // top: 0;
-    // text-align: center;
-    // width: 100%;
-    // height: 100%;
-    // visibility: hidden;
-    // opacity: 0;
-    // overflow: scroll;
-    // @include respond-to(600) {
-    //     overflow: hidden;
-    // }
-    // cursor: default;
-    // z-index: 100;
     background: $light;
-    // @include transition(all, 0.3);
 
     h1, h2, p, ul {
         color: $dark;
@@ -771,41 +756,6 @@ $HELP
         padding-left: 0;
     }
 }
-/* The ghost, nudged to maintain perfect centering */
-// .help-panel:before {
-//     content: '';
-//     display: inline-block;
-//     height: 100%;
-//     vertical-align: middle;
-//     margin-right: -0.25em; /* Adjusts for spacing */
-// }
-// .help-text {
-//     display: inline-block;
-//     vertical-align: middle;
-//     width: 300px;
-//     height: auto;
-//     padding-top: 1em;
-//     @include respond-to(600) {
-//         padding-top: 0;
-//     }
-//     visibility: hidden;
-//     @include transition(all, 0.3);
-//     -webkit-transform: scale(0.7);
-//     -moz-transform: scale(0.7);
-//     -ms-transform: scale(0.7);
-//     transform: scale(0.7);
-//     opacity: 0;
-
-//     @include respond-to(600) {
-//         width: 550px;
-//     }
-//     @include respond-to(768) {
-//         width: 700px;
-//     }
-//     @include respond-to(992) {
-//         width: 900px;
-//     }
-// }
 .help {
     color: $light;
     background-color: #999;

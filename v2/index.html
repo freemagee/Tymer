@@ -13,6 +13,10 @@
     </head>
     <body class="light">
 
+        <h1 class="hidden">Tymer is a simple free online countdown timer</h1>
+        <p class="hidden">Useful for exercise at home, meditation or cooking, Tymer is a well designed solution for your online timer needs. Simply select a duration up to one hour and click/tap to start the countdown. Tymer can be paused and will play an alarm sound upon completion.</p>
+        <p class="hidden"><strong>Tymer requires the use of javascript in order to provide you with a countdown. Consider whitelisting this site or turning javascript on.</strong></p>
+
         <div class="container">
             <div class="tymer">
                 <span class="number mins">00</span>
@@ -47,9 +51,32 @@
             <span class="message-text"></span>
         </div>
 
-        <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="library/js/vendor/jquery-2.0.0.min.js"><\/script>')</script>
-        <script src="library/js/main.min.js"></script>
+        <script type="text/javascript">
+
+        // Add a script element as a child of the body
+        function downloadJSAtOnload() {
+            var jq = document.createElement("script"),
+            main = document.createElement("script"),
+            cd = document.createElement("script");
+
+            jq.src = "library/js/lib/jquery-2.0.0.min.js";
+            main.src = "library/js/main.min.js";
+            cd.src = "library/js/plugin/jquery.countdown.min.js";
+
+            document.body.appendChild(jq);
+            document.body.appendChild(main);
+            document.body.appendChild(cd);
+        }
+
+        // Check for browser support of event handling capability
+        if (window.addEventListener)
+        window.addEventListener("load", downloadJSAtOnload, false);
+        else if (window.attachEvent)
+        window.attachEvent("onload", downloadJSAtOnload);
+        else window.onload = downloadJSAtOnload;
+
+        </script>
+
         <script type="text/javascript">
 
           var _gaq = _gaq || [];
