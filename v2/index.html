@@ -56,16 +56,16 @@
         // Add a script element as a child of the body
         function downloadJSAtOnload() {
             var jq = document.createElement("script"),
-            main = document.createElement("script"),
-            cd = document.createElement("script");
+            cd = document.createElement("script"),
+            main = document.createElement("script");
 
             jq.src = "library/js/lib/jquery-2.0.0.min.js";
-            main.src = "library/js/main.min.js";
             cd.src = "library/js/plugin/jquery.countdown.min.js";
+            main.src = "library/js/main.min.js";
 
             document.body.appendChild(jq);
-            document.body.appendChild(main);
             document.body.appendChild(cd);
+            document.body.appendChild(main);
         }
 
         // Check for browser support of event handling capability
