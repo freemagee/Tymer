@@ -28,5 +28,3 @@ Tymer uses Javascript, CSS and HTML to make the magic happen.
 HTML5 Boilerplate: [http://html5boilerplate.com/](http://html5boilerplate.com/)
 
 jQuery: [http://jquery.com/](http://jquery.com/)
-
-Keith Wood's Countdown jQuery plugin: [http://keith-wood.name/countdown.html](http://keith-wood.name/countdown.html)
