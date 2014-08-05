@@ -740,11 +740,6 @@ $MESSAGES
     text-shadow: 0 -1px 0 darken($error, 20%);
     //color: lighten($error, 30%);
 }
-
-
-/*-----------------------------------------------
-$HELP
------------------------------------------------*/
 .help-panel {
     background: $light;
 
@@ -754,43 +749,6 @@ $HELP
     ul {
         list-style: none;
         padding-left: 0;
-    }
-}
-.help {
-    color: $light;
-    background-color: #999;
-    border: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 98;
-    width: auto;
-    padding: 0 10px;
-    @include respond-to(600) {
-        padding: 0 0 0 10px;
-    }
-    display: block;
-    height: 50px;
-    line-height: 50px;
-    font-size: 16px;
-    font-weight: 700;
-    text-shadow: 0 -1px 0 darken(#999, 10%);
-    text-transform: uppercase;
-
-    &:focus {
-        outline: none;
-    }
-
-    @include respond-to(600) {
-        &:after {
-            content: '?';
-            background-color: #333;
-            display: block;
-            width: 50px;
-            height: 50px;
-            float: right;
-            margin-left: 10px;
-        }
     }
 }
 
@@ -1030,19 +988,17 @@ $CLASSES
     background-color: darken($spinner-secs, 10%);
     text-shadow: 0 -1px 0 darken($spinner-secs, 20%);
 }
-.dismiss {
+.prompt-btn {
     color: $light;
     background-color: #999;
     border: none;
     position: absolute;
     top: 0;
     right: 0;
+    //z-index: 98;
     z-index: 101;
     width: auto;
     padding: 0 10px;
-    @include respond-to(600) {
-        padding: 0 0 0 10px;
-    }
     display: block;
     height: 50px;
     line-height: 50px;
@@ -1051,10 +1007,28 @@ $CLASSES
     text-shadow: 0 -1px 0 darken(#999, 10%);
     text-transform: uppercase;
 
+    @include respond-to(600) {
+        padding: 0 0 0 10px;
+    }
+
     &:focus {
         outline: none;
     }
-
+}
+.help {
+    @include respond-to(600) {
+        &:after {
+            content: '?';
+            background-color: #333;
+            display: block;
+            width: 50px;
+            height: 50px;
+            float: right;
+            margin-left: 10px;
+        }
+    }
+}
+.dismiss {
     @include respond-to(600) {
         &:after {
             content: 'x';

@@ -18,7 +18,7 @@
         <p class="hidden"><strong>Tymer requires the use of javascript in order to provide you with a countdown. Consider whitelisting this site or turning javascript on.</strong></p>
 
         <div class="container">
-            <div class="tymer">
+            <div class="tymer" data-state="waiting">
                 <span class="number mins">00</span>
                 <span class="sep"></span>
                 <span class="number secs">00</span>
@@ -29,12 +29,12 @@
             <div class="tymer-set">
                 <div class="set-mins">
                     <button type="button" class="spinner minus js-mins-minus">&ndash;</button>
-                    <input class="inline js-minutes" type="number" name="minutes" value="00" placeholder="MM">
+                    <input class="inline js-minutes" type="number" name="minutes" value="00" placeholder="MM" tabindex="1">
                     <button type="button" class="spinner plus js-mins-plus">+</button>
                 </div>
                 <div class="set-secs">
                     <button type="button" class="spinner minus js-secs-minus">&ndash;</button>
-                    <input class="inline js-seconds" type="number" name="seconds" value="00" placeholder="SS">
+                    <input class="inline js-seconds" type="number" name="seconds" value="00" placeholder="SS" tabindex="2">
                     <button type="button" class="spinner plus js-secs-plus">+</button>
                 </div>
             </div>
@@ -43,39 +43,6 @@
                 <button type="button" class="btn clear js-clear">Clear</button>
             </div>
         </div>
-
-        <button class="help js-help">Help</button>
-
-        <div class="message">
-            <button class="dismiss">Dismiss</button>
-            <span class="message-text"></span>
-        </div>
-
-        <script type="text/javascript">
-
-        // Add a script element as a child of the body
-        function downloadJSAtOnload() {
-            var jq = document.createElement("script"),
-            cd = document.createElement("script"),
-            main = document.createElement("script");
-
-            jq.src = "library/js/lib/jquery-2.0.0.min.js";
-            cd.src = "library/js/plugin/jquery.countdown.min.js";
-            main.src = "library/js/main.min.js";
-
-            document.body.appendChild(jq);
-            document.body.appendChild(cd);
-            document.body.appendChild(main);
-        }
-
-        // Check for browser support of event handling capability
-        if (window.addEventListener)
-        window.addEventListener("load", downloadJSAtOnload, false);
-        else if (window.attachEvent)
-        window.attachEvent("onload", downloadJSAtOnload);
-        else window.onload = downloadJSAtOnload;
-
-        </script>
 
         <script type="text/javascript">
 
@@ -90,6 +57,9 @@
           })();
 
         </script>
+
+        <script src="./library/js/lib/jquery-2.1.1.min.js"></script>
+        <script src="./library/js/main.min.js"></script>
 
     </body>
 </html>

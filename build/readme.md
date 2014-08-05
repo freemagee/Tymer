@@ -1,7 +1,7 @@
-Tymer v2
-========
+Tymer
+=====
 
-**Live Project:** [http://tymer.co](http://tymer.co)
+**Live Project:** [http://neilmagee.com/project/tymer](http://neilmagee.com/project/tymer)
 
 *Changes*
 
@@ -17,7 +17,7 @@ Tymer is a simple web based countdown app. It has been designed to be lightweigh
 
 Try it on your laptop, tablet or phone for use while cooking, exercising or designated periods of watching paint dry.
 
-For more information please visit [http://tymer.co/why](http://tymer.co/why)
+For more information please visit [http://neilmagee.com/project/tymer/why](http://neilmagee.com/project/tymer/why)
 
 ####Technology
 
