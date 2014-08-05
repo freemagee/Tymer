@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tymer | Free online countdown timer | Simple timer</title>
+        <meta name="description" content="Tymer is an online countdown timer that is free &amp; easy to use on any device.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <link href='http://fonts.googleapis.com/css?family=Oswald:700|Open+Sans' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="library/css/main.min.css">
+        <link rel="icon" href="favicon.png" type="image/png">
+    </head>
+    <body class="light">
+
+        <h1 class="hidden">Tymer is a simple free online countdown timer</h1>
+        <p class="hidden">Useful for exercise at home, meditation or cooking, Tymer is a well designed solution for your online timer needs. Simply select a duration up to one hour and click/tap to start the countdown. Tymer can be paused and will play an alarm sound upon completion.</p>
+        <p class="hidden"><strong>Tymer requires the use of javascript in order to provide you with a countdown. Consider whitelisting this site or turning javascript on.</strong></p>
+
+        <div class="container">
+            <div class="tymer" data-state="waiting">
+                <span class="number mins">00</span>
+                <span class="sep"></span>
+                <span class="number secs">00</span>
+            </div>
+        </div>
+
+        <div class="tymer-controls">
+            <div class="tymer-set">
+                <div class="set-mins">
+                    <button type="button" class="spinner minus js-mins-minus">&ndash;</button>
+                    <input class="inline js-minutes" type="number" name="minutes" value="00" placeholder="MM" tabindex="1">
+                    <button type="button" class="spinner plus js-mins-plus">+</button>
+                </div>
+                <div class="set-secs">
+                    <button type="button" class="spinner minus js-secs-minus">&ndash;</button>
+                    <input class="inline js-seconds" type="number" name="seconds" value="00" placeholder="SS" tabindex="2">
+                    <button type="button" class="spinner plus js-secs-plus">+</button>
+                </div>
+            </div>
+
+            <div class="tymer-clear">
+                <button type="button" class="btn clear js-clear">Clear</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-42362315-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>
+
+        <script src="./library/js/lib/jquery-2.1.1.min.js"></script>
+        <script src="./library/js/main.min.js"></script>
+
+    </body>
+</html>

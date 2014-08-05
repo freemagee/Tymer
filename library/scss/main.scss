@@ -1,0 +1,1125 @@
+/*-----------------------------------------------
+$SASS VARIABLES
+-----------------------------------------------*/
+$complete: rgb(70,200,4);
+$error: rgb(252,97,150);
+$btn: #666;
+$link: rgb(0,176,53);
+$spinner-secs: rgb(0,176,53);
+$spinner-mins: rgb(0,159,227);
+$btn-clr: rgb(178,42,22);
+$light: #E8E8E8;
+$dark: #333;
+$input-background: #fffcdc;
+$input-color: #666;
+$tymer: #333;
+
+/*-----------------------------------------------
+$MIXINS
+-----------------------------------------------*/
+@mixin respond-to($point) {
+    @if $point == 370 {
+        @media (min-width: 370px) { @content; }
+    }
+    @else if $point == 480 {
+        @media (min-width: 480px) { @content; }
+    }
+    @else if $point == 600 {
+        @media (min-width: 600px) { @content; }
+    }
+    @else if $point == 660 {
+        @media (min-width: 660px) { @content; }
+    }
+    @else if $point == 768 {
+        @media (min-width: 768px) { @content; }
+    }
+    @else if $point == 800 {
+        @media (min-width: 800px) { @content; }
+    }
+    @else if $point == 992 {
+        @media (min-width: 992px) { @content; }
+    }
+    @else if $point == 1280 {
+        @media (min-width: 1280px) { @content; }
+    }
+}
+
+@mixin box-sizing($type) {
+    -webkit-box-sizing: #{$type}-box;
+    -moz-box-sizing: #{$type}-box;
+    box-sizing: #{$type}-box;
+}
+
+@mixin transition($property: all, $time: 0.5, $ease: ease-in-out) {
+    // transition times
+    -moz-transition-duration: #{$time}s;
+    -webkit-transition-duration: #{$time}s;
+    transition-duration: #{$time}s;
+    // transition properties
+    -moz-transition-property: $property;
+    -webkit-transition-property: $property;
+    transition-property: $property;
+    // transition function
+    -moz-transition-timing-function: $ease;
+    -webkit-transition-timing-function: $ease;
+    transition-timing-function: $ease;
+}
+
+/*! normalize.css v2.1.2 | MIT License | git.io/normalize */
+
+/*-----------------------------------------------
+$NORMALIZE
+-----------------------------------------------*/
+
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+
+img {
+    border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 2 */
+    margin: 0; /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-----------------------------------------------
+$MAIN
+-----------------------------------------------*/
+html,
+body {
+    height: 100%;
+}
+body {
+    font:400 16px/1.5 'Open Sans', sans-serif;
+    background: #222;
+    color: #666;
+    // overflow: hidden;
+    // position: relative;
+}
+@media all and (max-device-width: 480px) {
+    html, body { -webkit-text-size-adjust:none; }
+}
+@media all and (min-device-width: 768px) and (max-device-width: 1024px) {
+    html, body { -webkit-text-size-adjust:none; }
+}
+
+
+/*-----------------------------------------------
+$STRUCTURE
+-----------------------------------------------*/
+.container {
+    //max-width: 1500px;
+    margin: 0 auto;
+}
+.content {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 3em 1em;
+    @include respond-to(660) {
+        max-width: 600px;
+    }
+}
+
+/*-----------------------------------------------
+$LOGO
+-----------------------------------------------*/
+.logo-icon {
+    display: block;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1em;
+    @include respond-to(600) {
+        width: 144px;
+        height: 144px;
+        margin: 2em auto;
+    }
+}
+
+
+/*-----------------------------------------------
+$TYPE
+-----------------------------------------------*/
+h1, .alpha {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin: 0 0 1em 0;
+    padding: 0;
+    color: $light;
+    @include respond-to(600) {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+    @include respond-to(660) {
+        font-size: 2.5em;
+    }
+}
+h2 {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    color: $light;
+    @include respond-to(600) {
+        font-size: 1.5em;
+    }
+}
+p {
+    margin: 0 0 1.5em 0;
+    padding: 0;
+    color: $light;
+    @include respond-to(600) {
+        font-size: 1.4em;
+    }
+}
+.elaborate {
+    display: none;
+}
+
+/*-----------------------------------------------
+$LISTS
+-----------------------------------------------*/
+ul, ol {
+    color: $light;
+    font-style: italic;
+    margin: 0 0 1.5em 0;
+    padding: 0;
+
+    @include respond-to(600) {
+        font-size: 1.2em;
+    }
+}
+
+/*-----------------------------------------------
+$LINKS
+-----------------------------------------------*/
+a {
+    text-decoration: none;
+    color: $link;
+
+    &:hover,
+    &:active {
+        color: lighten($link, 30%);
+        //text-shadow: 0 1px 1px #000;
+    }
+}
+
+/*-----------------------------------------------
+$IMAGES
+-----------------------------------------------*/
+img {
+    vertical-align: middle;
+}
+
+/*--- FIGURES ---*/
+figure {
+    background-color: #111;
+    margin-bottom: 1.5em;
+
+    img {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+figcaption {
+    background: $light;
+    text-align: center;
+    padding: 0.5em;
+    color: $dark;
+    font-size: 0.875em;
+}
+
+/*--- IMAGE REPLACEMENT ---*/
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+}
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+
+/*-----------------------------------------------
+$FORMS
+-----------------------------------------------*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    background-color: $input-background;
+    color: $input-color;
+    padding: 0;
+    border: 0;
+    font-size: 1.25em;
+    width: 20%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    text-align: center;
+    -webkit-appearance: none;
+    border-radius: 0;
+    @include respond-to(600) {
+        height: 75px;
+        line-height: 75px;
+        font-size: 1.5em;
+    }
+    @include respond-to(800) {
+        font-size: 2.5em;
+    }
+}
+input[type="number"]:focus {
+    background-color: darken($input-background, 5%);
+    color: darken($input-color, 5%);
+    outline: 0;
+}
+button:focus {
+    outline: none;
+}
+
+
+/*-----------------------------------------------
+$MESSAGES
+-----------------------------------------------*/
+.message {
+    //cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 700;
+    text-align: center;
+    color: $light;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    visibility: hidden;
+    opacity: 0;
+    //overflow: hidden;
+    overflow: scroll;
+    @include transition(all, 0.3);
+}
+
+/* Ref: http://css-tricks.com/centering-in-the-unknown/ */
+
+/* The ghost, nudged to maintain perfect centering */
+.message:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+/* The element to be centered, can
+   also be of any width and height */
+.message-text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+    height: auto;
+    visibility: hidden;
+    @include transition(all, 0.3);
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0;
+    font-size: 1.5em;
+
+    @include respond-to(600) {
+        width: 550px;
+    }
+    @include respond-to(768) {
+        font-size: 2em;
+        width: 700px;
+    }
+    @include respond-to(992) {
+        width: 900px;
+    }
+}
+// .show .message-text {
+//     -webkit-transform: scale(1);
+//     -moz-transform: scale(1);
+//     -ms-transform: scale(1);
+//     transform: scale(1);
+//     visibility: visible;
+//     opacity: 1;
+// }
+.complete {
+    text-shadow: 0 -1px 0 darken($complete, 20%);
+    background: $complete;
+    //color: darken($complete, 50%);
+}
+.error {
+    background: $error;
+    text-shadow: 0 -1px 0 darken($error, 20%);
+    //color: lighten($error, 30%);
+}
+.help-panel {
+    background: $light;
+
+    h1, h2, p, ul {
+        color: $dark;
+    }
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+}
+
+
+/*-----------------------------------------------
+$TYMER
+-----------------------------------------------*/
+.tymer {
+    @extend .clearfix;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    @include transition(opacity);
+
+    span {
+        float: left;
+        display: block;
+        height: 100%;
+        text-align: center;
+        overflow: hidden;
+    }
+}
+.tymer.active,
+.tymer-controls.active {
+    visibility: visible;
+    opacity: 1;
+}
+.tymer-controls {
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    @include transition(opacity);
+    @include respond-to(600) {
+        height: 75px;
+    }
+}
+.tymer-set,
+.tymer-clear {
+    @extend .clearfix;
+    position: absolute;
+    width: 100%;
+    @include transition(left);
+}
+.tymer-set {
+    background: #C0C0C0;
+    line-height: 50px;
+    left: 0;
+}
+.tymer-set.inactive {
+    left: -100%;
+}
+.tymer-clear {
+    left: 100%;
+}
+.tymer-clear.active {
+    left: 0;
+}
+.number {
+    color: $tymer;
+    font-family: 'Oswald', monospace;
+    font-weight: 700;
+    width: 48%;
+    -webkit-font-smoothing: antialiased;
+}
+.sep {
+    background: url(../img/sep.svg) center center no-repeat;
+    width: 4%;
+    background-size:100%;
+}
+@-webkit-keyframes blinker {
+    0%      { opacity: 0; }
+    100%    { opacity: 1; }
+}
+@-moz-keyframes blinker {
+    0%      { opacity: 0; }
+    100%    { opacity: 1; }
+}
+@-o-keyframes blinker {
+    0%      { opacity: 0; }
+    100%    { opacity: 1; }
+}
+@keyframes blinker {
+    0%      { opacity: 0; }
+    100%    { opacity: 1; }
+}
+.paused {
+    // -webkit-animation-name: blinker;
+    // -webkit-animation-iteration-count: infinite;
+    // -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    // -webkit-animation-duration: 1s;
+
+    -webkit-animation: blinker 1s ease-in-out infinite; /* Safari 4+ */
+    -moz-animation:    blinker 1s ease-in-out infinite; /* Fx 5+ */
+    -o-animation:      blinker 1s ease-in-out infinite; /* Opera 12+ */
+    animation:         blinker 1s ease-in-out infinite; /* IE 10+ */
+}
+
+
+/*-----------------------------------------------
+$MISC
+-----------------------------------------------*/
+
+/* HIGHLIGHTED TEXT * These selection rule sets have to be separate. */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+/*-----------------------------------------------
+$CLASSES
+-----------------------------------------------*/
+.dark {
+    background-color: $dark;
+    color: $light;
+}
+.light {
+    background-color: $light;
+    color: $dark;
+}
+.show {
+    opacity: 1;
+    visibility: visible;
+
+    .message-text,
+    .help-text {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+/*--- BUTTONS ---*/
+.btn {
+    background-color: $btn;
+    color: #FFF;
+    line-height: 50px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    border: 0;
+    display: block;
+    padding: 0;
+    margin: 0;
+    @include box-sizing(border);
+    @include transition(background-color);
+    text-shadow: 0 -1px 0 darken($btn, 10%);
+    width: 100%;
+    @include respond-to(600) {
+        height: 75px;
+        line-height: 75px;
+    }
+    @include respond-to(600) {
+        font-size: 1.5em;
+    }
+    &:hover,
+    &:active {
+        background-color: darken($btn, 10%);
+        text-shadow: 0 -1px 0 darken($btn, 20%);
+        @include transition(background-color);
+    }
+    &:focus {
+        outline: none;
+    }
+
+    .control,
+    .clear,
+    .start {
+        float: left;
+    }
+
+    .control {
+        width: 50%;
+    }
+
+}
+.btn.clear {
+    background-color: $btn-clr;
+    text-shadow: 0 -1px 0 darken($btn-clr, 10%);
+}
+.btn.clear:hover,
+.btn.clear:active {
+    background-color: darken($btn-clr, 10%);
+    text-shadow: 0 -1px 0 darken($btn-clr, 20%);
+}
+.spinner {
+    color: #FFF;
+    font-size: 2em;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+    width: 15%;
+    float: left;
+    @include box-sizing(border);
+    @include transition(background-color);
+    @include respond-to(600) {
+        height: 75px;
+        line-height: 75px;
+        font-size: 2.25em;
+    }
+    @include respond-to(992) {
+        font-size: 2.5em;
+    }
+    &:hover {
+        @include transition(background-color);
+    }
+}
+.set-mins .spinner {
+    background-color: $spinner-mins;
+    text-shadow: 0 -1px 0 darken($spinner-mins, 10%);
+}
+.set-mins .spinner:hover,
+.set-mins .spinner:active {
+    background-color: darken($spinner-mins, 10%);
+    text-shadow: 0 -1px 0 darken($spinner-mins, 20%);
+}
+.set-secs .spinner {
+    background-color: $spinner-secs;
+    text-shadow: 0 -1px 0 darken($spinner-secs, 10%);
+}
+.set-secs .spinner:hover,
+.set-secs .spinner:active {
+    background-color: darken($spinner-secs, 10%);
+    text-shadow: 0 -1px 0 darken($spinner-secs, 20%);
+}
+.prompt-btn {
+    color: $light;
+    background-color: #999;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    //z-index: 98;
+    z-index: 101;
+    width: auto;
+    padding: 0 10px;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 -1px 0 darken(#999, 10%);
+    text-transform: uppercase;
+
+    @include respond-to(600) {
+        padding: 0 0 0 10px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+.help {
+    @include respond-to(600) {
+        &:after {
+            content: '?';
+            background-color: #333;
+            display: block;
+            width: 50px;
+            height: 50px;
+            float: right;
+            margin-left: 10px;
+        }
+    }
+}
+.dismiss {
+    @include respond-to(600) {
+        &:after {
+            content: 'x';
+            background-color: #333;
+            display: block;
+            width: 50px;
+            height: 50px;
+            float: right;
+            margin-left: 10px;
+        }
+    }
+}
+
+/*--- CLEARFIX ---*/
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*--- HIDE ---*/
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
