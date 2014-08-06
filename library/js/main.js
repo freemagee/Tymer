@@ -232,7 +232,6 @@ function init() {
         $('.message-text').text('Tymer Completed');
         $('.message').addClass('complete').addClass('show');
         $('.js-prompt-btn').removeClass('help').addClass('dismiss').text('Dismiss');
-        //dismiss( $('.message') );
         startAlertSound();
         var initClear = setInterval(function() {
             clearTymer();
@@ -264,7 +263,6 @@ function init() {
         $('.message-text').text(msg);
         $('.message').addClass('error').addClass('show');
         $('.js-prompt-btn').removeClass('help').addClass('dismiss').text('Dismiss');
-        //dismiss( $('.message') );
         clearInterval(intervalId);
     }
 
@@ -280,7 +278,6 @@ function init() {
                 $('.message-text').html(helpText);
                 $('.message').addClass('help-panel').addClass('show');
                 $(this).removeClass('help').addClass('dismiss').text('Dismiss');
-                //dismiss( $('.message') );
             } else if ( $(this).hasClass('dismiss') ) {
                 $('.message').attr('class', 'message');
                 $('.message').find('.message-text').empty();
