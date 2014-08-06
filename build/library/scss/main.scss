@@ -741,23 +741,26 @@ $MESSAGES
         width: 900px;
     }
 }
-// .show .message-text {
-//     -webkit-transform: scale(1);
-//     -moz-transform: scale(1);
-//     -ms-transform: scale(1);
-//     transform: scale(1);
-//     visibility: visible;
-//     opacity: 1;
-// }
 .complete {
     text-shadow: 0 -1px 0 darken($complete, 20%);
     background: $complete;
     color: lighten($complete, 30%);
+    font-size: 1.5em;
+
+
+    @include respond-to(600) {
+        font-size: 2em;
+    }
 }
 .error {
     background: $error;
     text-shadow: 0 -1px 0 darken($error, 20%);
     color: lighten($error, 30%);
+    font-size: 1.5em;
+
+    @include respond-to(600) {
+        font-size: 2em;
+    }
 }
 .help-panel {
     background: $light;

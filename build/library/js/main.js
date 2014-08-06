@@ -274,7 +274,7 @@ function init() {
 
         $('.js-prompt-btn').on('click', function(e) {
             if ( $(this).hasClass('help') ) {
-                var helpText = '<img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon"><h2 class="alpha">Simple Free Online Timer</h2><p>Tymer is a mobile optimised countdown timer. Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p><ul><li>Supports a countdown up to one hour - [MM:SS]</li><li>Click anywhere to start countdown</li><li>Alarm sounds when Tymer has completed (PC/MAC only)</li></ul><p>More info about <a href="why.html">Tymer</a>. Built by <a href="http://neilmagee.com">Neil Magee</a>.</p>';
+                var helpText = '<img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon"><h2 class="alpha">Simple Free Online Timer</h2><p>Tymer is a mobile optimised countdown timer.<br /> Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p><ul><li>Supports a countdown up to one hour - [MM:SS]</li><li>Click anywhere to start countdown</li><li>Alarm sounds when Tymer has completed (PC/MAC only)</li></ul><p>More info about <a href="why.html">Tymer</a>. Built by <a href="http://neilmagee.com">Neil Magee</a>.</p>';
                 $('.message-text').html(helpText);
                 $('.message').addClass('help-panel').addClass('show');
                 $(this).removeClass('help').addClass('dismiss').text('Dismiss');
