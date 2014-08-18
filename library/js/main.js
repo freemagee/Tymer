@@ -1,5 +1,5 @@
 function init() {
-    var intervalId, globalRemainingTime;
+    var intervalId, globalRemainingTime, countdown;
 
     // Active class allows intro animation on UI
     $('.tymer').addClass('active');
@@ -7,40 +7,56 @@ function init() {
 
     // Monitor changes to minutes
     $('.js-minutes').on('change', function() {
-        var setMinutes = leadingZero($(this).val());
+        var rawVal = $(this).val().substr(-2,2),
+        setMinutes;
 
-        clearInterval(intervalId);
+        if($.isNumeric(rawVal) && rawVal >= 0) {
+            setMinutes = leadingZero(rawVal);
 
-        if (setMinutes <= 59) {
-            $('.number.mins').text(setMinutes);
-        } else if (setMinutes == 60) {
-            $('.number.mins').text(setMinutes);
-            $('.number.secs').text('00');
+            clearInterval(intervalId);
+
+            if (setMinutes <= 59) {
+                $('.number.mins').text(setMinutes);
+            } else if (setMinutes === 60) {
+                $('.number.mins').text(setMinutes);
+                $('.number.secs').text('00');
+            } else {
+                triggerError(1);
+                $(this).val(60);
+                $('.number.mins').text(60);
+            }
         } else {
-            triggerError(1);
-            $(this).val(60);
-            $('.number.mins').text(60);
+            triggerError(2);
+            $(this).val('00');
         }
     });
 
     // Monitor changes to seconds
     $('.js-seconds').on('change', function() {
-        var setSeconds = leadingZero($(this).val()),
-        currentMinutes = leadingZero($('.js-minutes').val());
+        var rawVal = $(this).val().substr(-2,2);
 
         clearInterval(intervalId);
 
-        if (setSeconds <= 59) {
-            if (currentMinutes != 60) {
-                $('.number.secs').text(setSeconds);
+        if($.isNumeric(rawVal) && rawVal >= 0) {
+            var currentMinutes = leadingZero($('.js-minutes').val()),
+            setSeconds = leadingZero(rawVal);
+
+            if (setSeconds <= 59) {
+                if (currentMinutes !== 60) {
+                    $('.number.secs').text(setSeconds);
+                } else {
+                    triggerError(1);
+                    $(this).val('00');
+                    $('.number.secs').text('00');
+                }
             } else {
-                triggerError(1);
-                $(this).val(0);
+                $(this).val('00');
                 $('.number.secs').text('00');
             }
+
         } else {
-            $(this).val(0);
-            $('.number.secs').text('00');
+            triggerError(2);
+            $(this).val('00');
         }
     });
 
@@ -68,7 +84,7 @@ function init() {
         } else {
             var state = $(this).attr('data-state');
 
-            if (state == 'waiting') {
+            if (state === 'waiting') {
                 $(this).addClass('paused');
                 //console.log(globalRemainingTime);
                 $(this).attr('data-state', 'paused');
@@ -130,6 +146,7 @@ function init() {
     // FUNCTIONS
     // ********************************************************************************//
 
+    // Plus minus control buttons
     function adjustTime(target, type, source) {
         var initial = target.val(),
         newVal;
@@ -142,18 +159,18 @@ function init() {
                 if (initial <= 59) {
                     target.val(leadingZero(newVal));
                     $('.number.mins').text(leadingZero(newVal));
-                } else if (initial == 60) {
+                } else if (initial === 60) {
                     $('.number.mins').text('00');
                     target.val('00');
                 }
             }
 
             if (source === 'sec') {
-                if ( $('.js-minutes').val() != 60 ) {
+                if ( $('.js-minutes').val() !== 60 ) {
                     if (initial <= 58) {
                         target.val(leadingZero(newVal));
                         $('.number.secs').text(leadingZero(newVal));
-                    } else if (initial == 59) {
+                    } else if (initial === 59) {
                         $('.number.secs').text('00');
                         target.val('00');
                     }
@@ -167,21 +184,21 @@ function init() {
             newVal = ( initial - 1 );
 
             if (source === 'min') {
-                if (initial <= 60 && initial != 0) {
+                if (initial <= 60 && initial !== 0) {
                     target.val(leadingZero(newVal));
                     $('.number.mins').text(leadingZero(newVal));
-                } else if (initial == 0) {
+                } else if (initial === 0) {
                     target.val('60');
                     $('.number.mins').text('60');
                 }
             }
 
             if (source === 'sec') {
-                if ( $('.js-minutes').val() != 60 ) {
-                    if (initial <= 60 && initial != 0) {
+                if ( $('.js-minutes').val() !== 60 ) {
+                    if (initial <= 60 && initial !== 0) {
                         target.val(leadingZero(newVal));
                         $('.number.secs').text(leadingZero(newVal));
-                    } else if (initial == 0) {
+                    } else if (initial === 0) {
                         target.val('59');
                         $('.number.secs').text('59');
                     }
@@ -192,6 +209,7 @@ function init() {
         }
     }
 
+    // Receives a millisecond integer to create the countdown
     function startCountdown(ms) {
         var minsText = $('.tymer').find('.mins'),
         secsText = $('.tymer').find('.secs');
@@ -222,6 +240,7 @@ function init() {
         }, 1000);
     }
 
+    // called by a successful countdown
     function countdownComplete() {
         clearInterval(countdown);
         allDone();
@@ -231,7 +250,7 @@ function init() {
     function allDone() {
         $('.message-text').text('Tymer Completed');
         $('.message').addClass('complete').addClass('show');
-        $('.js-prompt-btn').removeClass('help').addClass('dismiss').text('Dismiss');
+        $('.js-prompt-btn').removeClass('help').addClass('dismiss').text('x');
         startAlertSound();
         var initClear = setInterval(function() {
             clearTymer();
@@ -251,24 +270,28 @@ function init() {
         $('.tymer-clear').removeClass('active');
     }
 
+    // Provide feedback to user about various errors
     function triggerError(type) {
         var msg = 'There has been a technical error with Tymer. Sorry for the inconvenience.';
 
         if (type === 0) {
             msg = 'Please enter a time. Use the +/- buttons to adjust minutes and seconds.';
-        }
-        else if (type === 1) {
+        } else if (type === 1) {
             msg = 'Maximum Tymer is 60 minutes';
+        } else if (type === 2) {
+            msg ='The value you entered is not valid. Please check and try again.';
         }
+
+
         $('.message-text').text(msg);
         $('.message').addClass('error').addClass('show');
-        $('.js-prompt-btn').removeClass('help').addClass('dismiss').text('Dismiss');
+        $('.js-prompt-btn').removeClass('help').addClass('dismiss').text('x');
         clearInterval(intervalId);
     }
 
     // Initiate Prompt Btn - add to DOM
     function initPromtBtn() {
-        var html = "<button class=\"help prompt-btn js-prompt-btn\">Help</button>";
+        var html = "<button class=\"help prompt-btn js-prompt-btn\">?</button>";
 
         $(html).prependTo('body');
 
@@ -277,12 +300,12 @@ function init() {
                 var helpText = '<img src="library/img/logo-icon.png" alt="Tymer logo" class="logo-icon"><h2 class="alpha">Simple Free Online Timer</h2><p>Tymer is a mobile optimised countdown timer.<br /> Whether you are cooking, exercising or practising the pomodoro technique, Tymer is for you.</p><ul><li>Supports a countdown up to one hour - [MM:SS]</li><li>Click anywhere to start countdown</li><li>Alarm sounds when Tymer has completed (PC/MAC only)</li></ul><p>More info about <a href="why.html">Tymer</a>. Built by <a href="http://neilmagee.com">Neil Magee</a>.</p>';
                 $('.message-text').html(helpText);
                 $('.message').addClass('help-panel').addClass('show');
-                $(this).removeClass('help').addClass('dismiss').text('Dismiss');
+                $(this).removeClass('help').addClass('dismiss').text('x');
             } else if ( $(this).hasClass('dismiss') ) {
                 $('.message').attr('class', 'message');
                 $('.message').find('.message-text').empty();
                 removeAlertSound();
-                $(this).removeClass('dismiss').addClass('help').text('Help');
+                $(this).removeClass('dismiss').addClass('help').text('?');
             }
 
             e.preventDefault();
@@ -293,11 +316,12 @@ function init() {
                 $('.message').attr('class', 'message');
                 $('.message').find('.message-text').empty();
                 removeAlertSound();
-                $('.js-prompt-btn').removeClass('dismiss').addClass('help').text('Help');
+                $('.js-prompt-btn').removeClass('dismiss').addClass('help').text('?');
             }
         });
     }
 
+    // Add message container to body
     function initMsg() {
         var html = "<div class=\"message\"><span class=\"message-text\"></span></div>";
 
@@ -317,6 +341,7 @@ function init() {
         return n;
     }
 
+    // Confirm time received is valid
     function validTime(min, sec) {
         var m = parseInt(min,10),
         s = parseInt(sec,10);
@@ -341,6 +366,8 @@ function init() {
         });
         $('<source src="library/audio/alert.wav" type="audio/wav"><source src="library/audio/alert.mp3" type="audio/mp3">').prependTo('#alert-sound');
     }
+
+    // Remove Alert sounds HTMl element
     function removeAlertSound() {
         if ($("#alert-sound").length > 0) {
             $("#alert-sound").remove();
@@ -349,8 +376,7 @@ function init() {
 
     // Adds CSS to <head> for responsive font size/line-height on Tymer spans
     function fit() {
-        var fontHeight = 16,
-        fontHeightFactor = 1.71,
+        var fontHeightFactor = 1.71,
         buffer = $('.tymer-set').height(),
         tymerHeight = window.innerHeight - buffer,
         availableTotalWidth = window.innerWidth,
@@ -358,10 +384,11 @@ function init() {
         currentFontHeight = parseFloat($('.tymer span').css('font-size')),
         proposedFontHeight = tymerHeight,
         proposedFontWidth = Math.floor( proposedFontHeight / fontHeightFactor ),
-        newStyle = optimumFit();
+        newStyle;
 
+        // Adjusts css relating to fontsize and appends to head
         function optimumFit() {
-            var optimumFontHeight;
+            var output, optimumFontHeight;
 
             if ( proposedFontWidth < currentFontWidth ) {
                 optimumFontHeight = Math.floor( ( ( proposedFontHeight / 100 ) * 95 ) );
@@ -386,6 +413,7 @@ function init() {
             $('#fit').remove();
         }
 
+        newStyle = optimumFit();
         $(newStyle).appendTo('head');
     }
 
