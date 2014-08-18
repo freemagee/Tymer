@@ -17,7 +17,7 @@ Tymer is a simple web based countdown app. It has been designed to be lightweigh
 
 Try it on your laptop, tablet or phone for use while cooking, exercising or designated periods of watching paint dry.
 
-For more information please visit [http://neilmagee.com/project/tymer/why](http://neilmagee.com/project/tymer/why)
+For more information please visit [http://neilmagee.com/project/tymer/why](http://neilmagee.com/project/tymer/why.html)
 
 ####Technology
 
