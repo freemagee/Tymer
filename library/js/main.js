@@ -159,20 +159,22 @@ function init() {
                 if (initial <= 59) {
                     target.val(leadingZero(newVal));
                     $('.number.mins').text(leadingZero(newVal));
-                } else if (initial === 60) {
+                } else if (initial === '60') {
                     $('.number.mins').text('00');
                     target.val('00');
                 }
             }
 
             if (source === 'sec') {
-                if ( $('.js-minutes').val() !== 60 ) {
+                if ( $('.js-minutes').val() !== '60' ) {
                     if (initial <= 58) {
                         target.val(leadingZero(newVal));
                         $('.number.secs').text(leadingZero(newVal));
-                    } else if (initial === 59) {
+                    } else if (initial === '59') {
                         $('.number.secs').text('00');
                         target.val('00');
+                    } else {
+                        triggerError();
                     }
                 } else {
                     triggerError(1);
@@ -184,21 +186,23 @@ function init() {
             newVal = ( initial - 1 );
 
             if (source === 'min') {
-                if (initial <= 60 && initial !== 0) {
+                if (initial <= 60 && initial !== '00') {
                     target.val(leadingZero(newVal));
                     $('.number.mins').text(leadingZero(newVal));
-                } else if (initial === 0) {
+                } else if (initial === '00') {
                     target.val('60');
                     $('.number.mins').text('60');
+                } else {
+                    triggerError();
                 }
             }
 
             if (source === 'sec') {
-                if ( $('.js-minutes').val() !== 60 ) {
-                    if (initial <= 60 && initial !== 0) {
+                if ( $('.js-minutes').val() !== '60' ) {
+                    if (initial <= 60 && initial !== '00') {
                         target.val(leadingZero(newVal));
                         $('.number.secs').text(leadingZero(newVal));
-                    } else if (initial === 0) {
+                    } else if (initial === '00') {
                         target.val('59');
                         $('.number.secs').text('59');
                     }
