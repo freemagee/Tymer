@@ -11,7 +11,7 @@ Tymer
 - Touch enabled
 - HTML5 Audio Alarm on completion
 
-###Summary
+### Summary
 
 Tymer is a simple web based countdown app. It has been designed to be lightweight and work with mobile devices.
 
@@ -19,11 +19,11 @@ Try it on your laptop, tablet or phone for use while cooking, exercising or desi
 
 For more information please visit [http://neilmagee.com/project/tymer/why](http://neilmagee.com/project/tymer/why.html)
 
-####Technology
+#### Technology
 
 Tymer uses Javascript, CSS and HTML to make the magic happen.
 
-####Credits
+#### Credits
 
 HTML5 Boilerplate: [http://html5boilerplate.com/](http://html5boilerplate.com/)
 
