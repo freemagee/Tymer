@@ -1,0 +1,24 @@
+{
+  "name": "scss-compiler",
+  "version": "1.0.0",
+  "description": "Turn SCSS files into CSS files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Neil Magee",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^1.3.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-postcss": "^6.3.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "postcss-cssnext": "^2.9.0",
+    "postcss-import": "^9.1.0",
+    "cssnano": "^3.10.0"
+  }
+}
