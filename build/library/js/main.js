@@ -8,9 +8,65 @@ Number.prototype.pad = function(size) {
 }
 
 var RenderTime = React.createClass({
+  countdown: null,
+  countdownTime: 0,
+  countdownStart: function(m, s) {
+    var targetTime = (m * 60) + (s * 1);
+
+    this.updateState('started');
+    this.countdownTime = (targetTime * 1000);
+    this.countdown = setInterval(this.countdownCalculate, 1000);
+  },
+  countdownComplete: function() {
+    clearInterval(this.countdown);
+    this.updateState('stopped');
+  },
+  countdownPause: function() {
+    clearInterval(this.countdown);
+    this.updateState('paused');
+  },
+  countdownRestart: function() {
+    this.countdown = setInterval(this.countdownCalculate, 1000);
+    this.updateState('started');
+  },
+  countdownCalculate: function() {
+    if (this.countdownTime === 0) {
+      this.countdownComplete();
+      return;
+    } else {
+      this.countdownTime = this.countdownTime - 1000;
+
+      var remainingTime = new Date(this.countdownTime);
+      var remainingSecs = remainingTime.getSeconds();
+      var remainingMins = remainingTime.getMinutes();
+      var remainingHours = remainingTime.getHours();
+
+      // Deal with 60 mins equalling 1 hour & 1 hour equalling 00 mins in time format 01:00:00
+      if (remainingHours >= 1) {
+        remainingMins = 60;
+      }
+
+      this.updateTime(remainingMins.pad(), remainingSecs.pad());
+    }
+  },
+  handleClick: function() {
+    if (this.props.timerState !== 'started') {
+      this.countdownStart(parseInt(this.props.minutes), parseInt(this.props.seconds));
+    } else if (this.props.timerState === 'paused') {
+      this.countdownRestart();
+    } else {
+      this.countdownPause();
+    }
+  },
+  updateTime: function(m, s) {
+    this.props.updateTime(m, s);
+  },
+  updateState: function(state) {
+    this.props.updateState(state);
+  },
   render: function() {
     return (
-      React.createElement('div', {className: 'timeContainer'},
+      React.createElement('div', {className: 'timeContainer', onClick: this.handleClick},
         React.createElement('div', {className: 'number number--mins', children: this.props.minutes}),
         React.createElement('div', {className: 'number__seperator', children: ':'}),
         React.createElement('div', {className: 'number number--secs', children: this.props.seconds})
@@ -208,26 +264,59 @@ var SetTimeUI = React.createClass({
   },
   getInitialState: function() {
     return {
+      timerState: 'stopped',
       minutes: '01',
-      seconds: '00'
+      seconds: '00',
+      renderedMinutes: '01',
+      renderedSeconds: '00'
     }
+  },
+  updateState: function(state) {
+    if (state === 'stopped') {
+      this.setState({
+        renderedMinutes: this.state.minutes,
+        renderedSeconds: this.state.seconds
+      });
+    }
+    this.setState({
+      timerState: state
+    });
   },
   setMinutes: function(m) {
     this.setState({
-      minutes: m
+      minutes: m,
+      renderedMinutes: m
     });
   },
   setSeconds: function(s) {
     this.setState({
-      seconds: s
+      seconds: s,
+      renderedSeconds: s
+    });
+  },
+  updateTime: function(m, s) {
+    this.setState({
+      renderedMinutes: m,
+      renderedSeconds: s
     });
   },
   render: function() {
+    if (this.state.timerState === 'started') {
+      appClassName = 'appContainer appContainer--started';
+    } else if (this.state.timerState === 'paused') {
+      appClassName = 'appContainer appContainer--paused';
+    } else {
+      appClassName = 'appContainer';
+    }
+
     return (
-      React.createElement('div', {className: 'appContainer'},
+      React.createElement('div', {className: appClassName},
         React.createElement(RenderTime, {
-          minutes: this.state.minutes,
-          seconds: this.state.seconds
+          timerState: this.state.timerState,
+          updateState: this.updateState,
+          minutes: this.state.renderedMinutes,
+          seconds: this.state.renderedSeconds,
+          updateTime: this.updateTime
         }),
         React.createElement('div', {className: 'setTimeContainer'},
           React.createElement(SetMinutesUI, {
