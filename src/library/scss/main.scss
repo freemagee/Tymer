@@ -3,7 +3,6 @@
 // 1. Configuration and helpers
 @import
   'abstracts/variables',
-  'abstracts/functions',
   'abstracts/mixins';
 
 // 2. Vendors
@@ -13,7 +12,6 @@
 // 3. Base stuff
 @import
   'base/base',
-  'base/fonts',
   'base/typography',
   'base/helpers';
 
@@ -25,6 +23,10 @@
 @import
   'components/button';
 
-// 6. App-specific styles
+// 6. Theme-specific styles
+@import
+  'themes/default';
+
+// 7. App-specific styles
 @import
   'app/ui';

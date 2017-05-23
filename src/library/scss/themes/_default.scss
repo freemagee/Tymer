@@ -2,3 +2,47 @@
 // When having several themes, this file contains everything related to the
 // default one.
 // -----------------------------------------------------------------------------
+
+.dark {
+  background-color: $dark;
+  color: $light;
+
+  h1, .alpha {
+    background-color: darken($light, 60%);
+    color: $light;
+  }
+  h2 {
+    color: darken($light, 20%);
+  }
+  a {
+    &:hover,
+    &:active {
+      color: lighten($link, 20%);
+    }
+  }
+  ul, ol {
+    color: darken($light, 20%);
+  }
+}
+
+.light {
+  background-color: $light;
+  color: $dark;
+
+  h1, .alpha {
+    background-color: lighten($dark, 60%);
+    color: $dark;
+  }
+  h2 {
+    color: lighten($dark, 20%);
+  }
+  a {
+    &:hover,
+    &:active {
+      color: darken($link, 10%);
+    }
+  }
+  ul, ol {
+    color: lighten($dark, 20%);
+  }
+}

@@ -10,12 +10,49 @@
   flex: 1;
 
   &__btn {
-    flex: 0 1 50px;
+    padding: 0;
+    flex: 0 1 100px;
+    color: #fff;
+    font-size: 3rem;
+    transition: background-color 0.2s;
   }
 
   &__input {
     flex: 1;
     text-align: center;
+    background-color: $input-background;
+    border: 0;
+    color: $input-color;
+    font-size: 2.3rem;
+    transition: background-color 0.2s;
+
+    &:focus {
+      background-color: darken($input-background, 5%);
+      color: darken($input-color, 5%);
+      outline: 0;
+    }
+  }
+}
+
+.setMinutes__btn {
+  background-color: $spinner-mins;
+  text-shadow: 0 -1px 0 darken($spinner-mins, 10%);
+
+  &:hover,
+  &:active {
+    background-color: darken($spinner-mins, 10%);
+    text-shadow: 0 -1px 0 darken($spinner-mins, 20%);
+  }
+}
+
+.setSeconds__btn {
+  background-color: $spinner-secs;
+  text-shadow: 0 -1px 0 darken($spinner-secs, 10%);
+
+  &:hover,
+  &:active {
+    background-color: darken($spinner-secs, 10%);
+    text-shadow: 0 -1px 0 darken($spinner-secs, 20%);
   }
 }
 
@@ -24,8 +61,8 @@
   font-family: 'Oswald', monospace;
   font-weight: 700;
   text-align: center;
-}
 
-.number__seperator {
-  flex: 0;
+  &__seperator {
+    flex: 0;
+  }
 }

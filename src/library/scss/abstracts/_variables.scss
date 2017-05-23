@@ -2,52 +2,20 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-
-
-
-
-/// Regular font family
-/// @type List
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
-
-/// Code (monospace) font family
-/// @type List
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
-
-
-
-
-
-/// Copy text color
-/// @type Color
-$text-color: rgb(34, 34, 34) !default;
-
-/// Main brand color
-/// @type Color
-$brand-color: rgb(229, 0, 80) !default;
-
-/// Light grey
-/// @type Color
-$light-grey: rgb(237, 237, 237) !default;
-
-/// Medium grey
-/// @type Color
-$mid-grey: rgb(153, 153, 153) !default;
-
-/// Dark grey
-/// @type Color
-$dark-grey: rgb(68, 68, 68) !default;
-
-
-
-
-
-/// Container's maximum width
-/// @type Length
-$max-width: 1180px !default;
-
-
-
+$color__text-default: #666;
+$light: #E8E8E8;
+$dark: #333;
+$complete: rgb(70,200,4);
+$error: rgb(252,97,150);
+$btn: #666;
+$link: rgb(0,176,53);
+$spinner-secs: rgb(0,176,53);
+$spinner-mins: rgb(0,159,227);
+$btn-clr: rgb(178,42,22);
+$input-background: #fffcdc;
+$input-color: #666;
+$text-font-stack: 'Open Sans', sans-serif;
+$alt-font-stack: 'Oswald', sans-serif;
 
 
 /// Breakpoints map
@@ -58,14 +26,3 @@ $breakpoints: (
   'medium': 768px,
   'large': 1024px,
 ) !default;
-
-
-
-
-
-
-/// Relative or absolute URL where all assets are served from
-/// @type String
-/// @example scss - When using a CDN
-///   $base-url: 'http://cdn.example.com/assets/';
-$base-url: '/assets/' !default;

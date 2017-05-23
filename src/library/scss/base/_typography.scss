@@ -2,6 +2,32 @@
  * Basic typography style for copy text
  */
 body {
-  color: $text-color;
-  font: normal 125% / 1.4 $text-font-stack;
+  font: normal 16px / 1.4 $text-font-stack;
+  color: $color__text-default;
+}
+
+h1, .alpha {
+  font-family: $alt-font-stack;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0 0 1.5em 0;
+  padding: 0;
+}
+
+.elaborate {
+  display: none;
 }

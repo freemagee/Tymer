@@ -1,14 +1,20 @@
 .appContainer {
   height: 100vh;
+
+  &--paused {
+    .timeContainer {
+      animation: blinker 1s ease-in-out infinite;
+    }
+  }
 }
 
 .timeContainer {
-  height: 95vh;
+  height: calc(100vh - 100px);
   display: flex;
   align-items: center;
 }
 
 .setTimeContainer {
   display: flex;
-  height: 5vh;
+  height: 100px;
 }
