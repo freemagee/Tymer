@@ -94,6 +94,6 @@ gulp.task('serve', ['watch-sass'], function () {
     // Initiate BrowserSync
     // Docs: https://www.browsersync.io/docs/gulp
     browserSync.init({
-        proxy: "http://localhost:3030/"
+        server: "./"
     });
 });
