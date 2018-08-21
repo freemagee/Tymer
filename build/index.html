@@ -7,8 +7,7 @@
         <meta name="description" content="Tymer is an online countdown timer that is free &amp; easy to use on any device.">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <link href='http://fonts.googleapis.com/css?family=Oswald:700|Open+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="library/css/main.min.css">
+        <link rel="stylesheet" href="./library/css/main.css">
         <link rel="icon" href="favicon.png" type="image/png">
     </head>
     <body class="light">
@@ -44,8 +43,11 @@
             </div>
         </div>
 
-        <script src="./library/js/lib/jquery-2.1.1.min.js"></script>
-        <script src="./library/js/main.min.js"></script>
+        <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script>
+        (window.jQuery || document.write('<script src="./library/js/libs/jquery-3.3.1.slim.min.js"><\/script>'));
+        </script>
+        <script src="./library/js/main.js"></script>
 
     </body>
 </html>
