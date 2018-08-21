@@ -1,283 +1,296 @@
-const WAIT_INTERVAL = 1000;
-const ENTER_KEY = 13;
-
-Number.prototype.pad = function(size) {
-  var s = String(this);
-  while (s.length < (size || 2)) {s = "0" + s;}
-  return s;
+function pad(s, size) {
+  let o = s.toString();
+  while (o.length < (size || 2)) {
+    o = `0${o}`;
+  }
+  return o;
 }
 
-var RenderTime = React.createClass({
+const WAIT_INTERVAL = 1000;
+const ENTER_KEY = 13;
+const RenderTime = React.createClass({
   countdown: null,
   countdownTime: 0,
-  countdownStart: function(m, s) {
-    var targetTime = (m * 60) + (s * 1);
+  countdownStart(m, s) {
+    const targetTime = m * 60 + s * 1;
 
-    this.updateState('started');
-    this.countdownTime = (targetTime * 1000);
+    this.updateState("started");
+    this.countdownTime = targetTime * 1000;
     this.countdown = setInterval(this.countdownCalculate, 1000);
   },
-  countdownComplete: function() {
+  countdownComplete() {
     clearInterval(this.countdown);
-    this.updateState('stopped');
+    this.updateState("stopped");
   },
-  countdownPause: function() {
+  countdownPause() {
     clearInterval(this.countdown);
-    this.updateState('paused');
+    this.updateState("paused");
   },
-  countdownRestart: function() {
+  countdownRestart() {
     this.countdown = setInterval(this.countdownCalculate, 1000);
-    this.updateState('started');
+    this.updateState("started");
   },
-  countdownCalculate: function() {
+  countdownCalculate() {
     if (this.countdownTime === 0) {
       this.countdownComplete();
       return;
-    } else {
-      this.countdownTime = this.countdownTime - 1000;
-
-      var remainingSecs = this.calculateRemainingSeconds(this.countdownTime);
-      var remainingMins = Math.floor(this.countdownTime / 60000);
-      var remainingHours = Math.floor(this.countdownTime / 3600000);
-
-      // Deal with 60 mins equalling 1 hour & 1 hour equalling 00 mins in time format 01:00:00
-      if (remainingHours >= 1) {
-        remainingMins = 60;
-      }
-
-      this.updateTime(remainingMins.pad(), remainingSecs.pad());
     }
+
+    this.countdownTime = this.countdownTime - 1000;
+
+    const remainingSecs = this.calculateRemainingSeconds(this.countdownTime);
+    let remainingMins = Math.floor(this.countdownTime / 60000);
+    const remainingHours = Math.floor(this.countdownTime / 3600000);
+
+    // Deal with 60 mins equalling 1 hour & 1 hour equalling 00 mins in time format 01:00:00
+    if (remainingHours >= 1) {
+      remainingMins = 60;
+    }
+
+    this.updateTime(pad(remainingMins), pad(remainingSecs));
   },
   calculateRemainingSeconds(ms) {
-    var secs = ms / 1000;
-    var mins = secs / 60;
+    const secs = ms / 1000;
+    const mins = secs / 60;
 
     return Math.round((mins % 1) * 60);
   },
-  handleClick: function() {
-    if (this.props.timerState !== 'started') {
-      this.countdownStart(parseInt(this.props.minutes), parseInt(this.props.seconds));
-    } else if (this.props.timerState === 'paused') {
+  handleClick() {
+    if (this.props.timerState !== "started") {
+      this.countdownStart(
+        parseInt(this.props.minutes, 10),
+        parseInt(this.props.seconds, 10)
+      );
+    } else if (this.props.timerState === "paused") {
       this.countdownRestart();
     } else {
       this.countdownPause();
     }
   },
-  updateTime: function(m, s) {
+  updateTime(m, s) {
     this.props.updateTime(m, s);
   },
-  updateState: function(state) {
+  updateState(state) {
     this.props.updateState(state);
   },
-  render: function() {
-    return (
-      React.createElement('div', {className: 'timeContainer', onClick: this.handleClick},
-        React.createElement('div', {className: 'number number--mins', children: this.props.minutes}),
-        React.createElement('div', {className: 'number__seperator', children: ':'}),
-        React.createElement('div', {className: 'number number--secs', children: this.props.seconds})
-      )
-    )
+  render() {
+    return React.createElement(
+      "div",
+      { className: "timeContainer", onClick: this.handleClick },
+      React.createElement("div", {
+        className: "number number--mins",
+        children: this.props.minutes
+      }),
+      React.createElement("div", {
+        className: "number__seperator",
+        children: ":"
+      }),
+      React.createElement("div", {
+        className: "number number--secs",
+        children: this.props.seconds
+      })
+    );
   }
 });
 
-var SetSecondsUI = React.createClass({
-  getInitialState: function() {
+const SetSecondsUI = React.createClass({
+  getInitialState() {
     return {
       seconds: this.props.seconds
     };
   },
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
-      this.setState({seconds: nextProps.seconds});
+      this.setState({ seconds: nextProps.seconds });
     }
   },
-  increaseSeconds: function() {
-    var currentSecs = parseInt(this.state.seconds);
-    var newSecs = 0;
+  increaseSeconds() {
+    const currentSecs = parseInt(this.state.seconds, 10);
+    let newSecs = 0;
 
     if (currentSecs >= 59) {
-      newSecs = '00';
+      newSecs = "00";
     } else {
-      newSecs = (currentSecs + 1).pad();
+      newSecs = pad((currentSecs + 1));
       String(newSecs);
     }
 
     this.props.onChange(newSecs);
   },
-  decreaseSeconds: function() {
-    var currentSecs = parseInt(this.state.seconds);
-    var newSecs = 0;
+  decreaseSeconds() {
+    const currentSecs = parseInt(this.state.seconds, 10);
+    let newSecs = 0;
 
-    if (currentSecs == 0) {
-      newSecs = '59';
+    if (currentSecs === 0) {
+      newSecs = "59";
     } else {
-      newSecs = (currentSecs - 1).pad();
+      newSecs = pad((currentSecs - 1));
       String(newSecs);
     }
 
     this.props.onChange(newSecs);
   },
-  handleChange: function(value) {
+  handleChange(value) {
     clearTimeout(this.timer);
 
     this.setState({ seconds: value.target.value });
 
-    this.timer = setTimeout(this.triggerChange, WAIT_INTERVAL, value.target.value);
+    this.timer = setTimeout(
+      this.triggerChange,
+      WAIT_INTERVAL,
+      value.target.value
+    );
   },
-  handleKeyDown: function(e) {
+  handleKeyDown(e) {
     if (e.keyCode === ENTER_KEY) {
-        this.triggerChange(e);
+      this.triggerChange(e);
     }
   },
-  triggerChange: function(v) {
-    var parsedVal = parseInt(v);
-    var newVal = '';
+  triggerChange(v) {
+    const parsedVal = parseInt(v, 10);
+    let newVal = "";
 
     if (parsedVal > 60) {
-      newVal = '59';
+      newVal = "59";
     } else if (parsedVal <= 0) {
-      newVal = '00';
+      newVal = "00";
+    } else if (Number.isInteger(parsedVal)) {
+      newVal = v;
     } else {
-      if (Number.isInteger(parsedVal)) {
-        newVal = v;
-      } else {
-        newVal = '00';
-      }
+      newVal = "00";
     }
 
     this.props.onChange(newVal);
   },
-  render: function() {
-    return (
-      React.createElement('div', {className: 'setSeconds'},
-        React.createElement('button', {
-          className: 'setSeconds__btn setSeconds__btn--minus',
-          children: '-',
-          onClick: this.decreaseSeconds
-        }),
-        React.createElement('input', {
-          className: 'setSeconds__input',
-          value: this.state.seconds,
-          onChange: this.handleChange,
-          onKeyDown: this.handleKeyDown
-        }),
-        React.createElement('button', {
-          className: 'setSeconds__btn setSeconds__btn--plus',
-          children: '+',
-          onClick: this.increaseSeconds
-        })
-      )
-    )
+  render() {
+    return React.createElement(
+      "div",
+      { className: "setSeconds" },
+      React.createElement("button", {
+        className: "setSeconds__btn setSeconds__btn--minus",
+        children: "-",
+        onClick: this.decreaseSeconds
+      }),
+      React.createElement("input", {
+        className: "setSeconds__input",
+        value: this.state.seconds,
+        onChange: this.handleChange,
+        onKeyDown: this.handleKeyDown
+      }),
+      React.createElement("button", {
+        className: "setSeconds__btn setSeconds__btn--plus",
+        children: "+",
+        onClick: this.increaseSeconds
+      })
+    );
   }
 });
 
-var SetMinutesUI = React.createClass({
-  getInitialState: function() {
+const SetMinutesUI = React.createClass({
+  getInitialState() {
     return {
       minutes: this.props.minutes
     };
   },
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
-      this.setState({minutes: nextProps.minutes});
+      this.setState({ minutes: nextProps.minutes });
     }
   },
-  increaseMinutes: function() {
-    var currentMins = parseInt(this.state.minutes);
-    var newMins = 0;
+  increaseMinutes() {
+    const currentMins = parseInt(this.state.minutes, 10);
+    let newMins = 0;
 
     if (currentMins >= 59) {
-      newMins = '00';
+      newMins = "00";
     } else {
-      newMins = (currentMins + 1).pad();
+      newMins = pad(currentMins + 1);
       String(newMins);
     }
 
     this.props.onChange(newMins);
   },
-  decreaseMinutes: function() {
-    var currentMins = parseInt(this.state.minutes);
-    var newMins = 0;
+  decreaseMinutes() {
+    const currentMins = parseInt(this.state.minutes, 10);
+    let newMins = 0;
 
-    if (currentMins == 0) {
-      newMins = '59';
+    if (currentMins === 0) {
+      newMins = "59";
     } else {
-      newMins = (currentMins - 1).pad();
+      newMins = pad(currentMins - 1);
       String(newMins);
     }
 
     this.props.onChange(newMins);
   },
-  handleChange: function(value) {
+  handleChange(value) {
     clearTimeout(this.timer);
 
     this.setState({ minutes: value.target.value });
 
     this.timer = setTimeout(this.triggerChange, WAIT_INTERVAL);
   },
-  handleKeyDown: function(e) {
+  handleKeyDown(e) {
     if (e.keyCode === ENTER_KEY) {
-        this.triggerChange(e);
+      this.triggerChange(e);
     }
   },
-  triggerChange: function() {
-    var parsedVal = parseInt(this.state.minutes);
-    var newVal = '';
+  triggerChange() {
+    const parsedVal = parseInt(this.state.minutes, 10);
+    let newVal = "";
 
     if (parsedVal > 60) {
-      newVal = '59';
+      newVal = "59";
     } else if (parsedVal <= 0) {
-      newVal = '00';
+      newVal = "00";
+    } else if (Number.isInteger(parsedVal)) {
+      newVal = this.state.minutes;
     } else {
-      if (Number.isInteger(parsedVal)) {
-        newVal = this.state.minutes;
-      } else {
-        newVal = '00';
-      }
+      newVal = "00";
     }
 
     this.props.onChange(newVal);
   },
-  render: function() {
-    return (
-      React.createElement('div', {className: 'setMinutes'},
-        React.createElement('button', {
-          className: 'setMinutes__btn setMinutes__btn--minus',
-          children: '-',
-          onClick: this.decreaseMinutes
-        }),
-        React.createElement('input', {
-          className: 'setMinutes__input',
-          value: this.state.minutes,
-          onChange: this.handleChange,
-          onKeyDown: this.handleKeyDown
-        }),
-        React.createElement('button', {
-          className: 'setMinutes__btn setMinutes__btn--plus',
-          children: '+',
-          onClick: this.increaseMinutes
-        })
-      )
-    )
+  render() {
+    return React.createElement(
+      "div",
+      { className: "setMinutes" },
+      React.createElement("button", {
+        className: "setMinutes__btn setMinutes__btn--minus",
+        children: "-",
+        onClick: this.decreaseMinutes
+      }),
+      React.createElement("input", {
+        className: "setMinutes__input",
+        value: this.state.minutes,
+        onChange: this.handleChange,
+        onKeyDown: this.handleKeyDown
+      }),
+      React.createElement("button", {
+        className: "setMinutes__btn setMinutes__btn--plus",
+        children: "+",
+        onClick: this.increaseMinutes
+      })
+    );
   }
 });
 
-var SetTimeUI = React.createClass({
+const SetTimeUI = React.createClass({
   propTypes: {
     minutes: React.PropTypes.string,
     seconds: React.PropTypes.string
   },
-  getInitialState: function() {
+  getInitialState() {
     return {
-      timerState: 'stopped',
-      minutes: '01',
-      seconds: '00',
-      renderedMinutes: '01',
-      renderedSeconds: '00'
-    }
+      timerState: "stopped",
+      minutes: "01",
+      seconds: "00",
+      renderedMinutes: "01",
+      renderedSeconds: "00"
+    };
   },
-  updateState: function(state) {
-    if (state === 'stopped') {
+  updateState(state) {
+    if (state === "stopped") {
       this.setState({
         renderedMinutes: this.state.minutes,
         renderedSeconds: this.state.seconds
@@ -287,57 +300,60 @@ var SetTimeUI = React.createClass({
       timerState: state
     });
   },
-  setMinutes: function(m) {
+  setMinutes(m) {
     this.setState({
       minutes: m,
       renderedMinutes: m
     });
   },
-  setSeconds: function(s) {
+  setSeconds(s) {
     this.setState({
       seconds: s,
       renderedSeconds: s
     });
   },
-  updateTime: function(m, s) {
+  updateTime(m, s) {
     this.setState({
       renderedMinutes: m,
       renderedSeconds: s
     });
   },
-  render: function() {
-    if (this.state.timerState === 'started') {
-      appClassName = 'appContainer appContainer--started';
-    } else if (this.state.timerState === 'paused') {
-      appClassName = 'appContainer appContainer--paused';
-    } else {
-      appClassName = 'appContainer';
+  generateAppClassName() {
+    if (this.state.timerState === "started") {
+      return "appContainer appContainer--started";
+    } else if (this.state.timerState === "paused") {
+      return "appContainer appContainer--paused";
     }
 
-    return (
-      React.createElement('div', {className: appClassName},
-        React.createElement(RenderTime, {
-          timerState: this.state.timerState,
-          updateState: this.updateState,
-          minutes: this.state.renderedMinutes,
-          seconds: this.state.renderedSeconds,
-          updateTime: this.updateTime
+    return "appContainer";
+  },
+  render() {
+    return React.createElement(
+      "div",
+      { className: this.generateAppClassName() },
+      React.createElement(RenderTime, {
+        timerState: this.state.timerState,
+        updateState: this.updateState,
+        minutes: this.state.renderedMinutes,
+        seconds: this.state.renderedSeconds,
+        updateTime: this.updateTime
+      }),
+      React.createElement(
+        "div",
+        { className: "setTimeContainer" },
+        React.createElement(SetMinutesUI, {
+          minutes: this.state.minutes,
+          onChange: this.setMinutes
         }),
-        React.createElement('div', {className: 'setTimeContainer'},
-          React.createElement(SetMinutesUI, {
-            minutes: this.state.minutes,
-            onChange: this.setMinutes
-          }),
-          React.createElement(SetSecondsUI, {
-            seconds: this.state.seconds,
-            onChange: this.setSeconds
-          })
-        )
+        React.createElement(SetSecondsUI, {
+          seconds: this.state.seconds,
+          onChange: this.setSeconds
+        })
       )
-    )
+    );
   }
 });
 
-var rootElement = React.createElement(SetTimeUI);
+const rootElement = React.createElement(SetTimeUI);
 
-ReactDOM.render(rootElement, document.getElementById('tymer-app'));
+ReactDOM.render(rootElement, document.getElementById("tymer-app"));
