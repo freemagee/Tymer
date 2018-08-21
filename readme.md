@@ -3,7 +3,7 @@ Tymer
 
 **Live Project:** [http://neilmagee.com/project/tymer](http://neilmagee.com/project/tymer)
 
-*Changes*
+*Features*
 
 - New UI
 - Greater screen support
@@ -21,10 +21,12 @@ For more information please visit [http://neilmagee.com/project/tymer/why](http:
 
 #### Technology
 
-Tymer uses Javascript, CSS and HTML to make the magic happen.
+Tymer uses Javascript (jQuery), CSS (SCSS) and HTML.
 
-#### Credits
+## Notes
 
-HTML5 Boilerplate: [http://html5boilerplate.com/](http://html5boilerplate.com/)
+This is a legacy project. Originally created in May 15, 2013. I have made changes over the years, mainly from a technology perspective. There is a React ([React Without JSX](https://reactjs.org/docs/react-without-jsx.html)) branch and a new branch as of August 21, 2018 that will be using the official (Create React App)[https://github.com/facebook/create-react-app].
 
-jQuery: [http://jquery.com/](http://jquery.com/)
+The master has recently been updated to fix a bug. I took the liberty to fix some other issues as well so that even though it is an older technology, it still works.
+
+I have learnt a lot since I created this project and sometimes it is good to look back at how you used to work, so that you can appreciate where you are now.
