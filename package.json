@@ -1,24 +1,35 @@
 {
-  "name": "scss-compiler",
+  "name": "Front-end",
   "version": "1.0.0",
-  "description": "Turn SCSS files into CSS files",
+  "description": "Front-end tools",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Neil Magee",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.24.6",
+    "browser-sync": "^2.23.6",
+    "cssnano": "^3.10.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.11.1",
     "gulp": "^3.9.1",
     "gulp-changed": "^3.2.0",
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.2.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-postcss": "^8.0.0",
-    "gulp-sourcemaps": "^2.6.4",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^1.12.1",
     "postcss-cssnext": "^3.1.0",
-    "postcss-import": "^12.0.0",
-    "cssnano": "^4.0.5"
-  }
+    "postcss-font-magician": "^2.2.1",
+    "postcss-import": "^11.0.0",
+    "postcss-pxtorem": "^4.0.1",
+    "prettier": "^1.13.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
