@@ -22,6 +22,7 @@ module.exports = {
     "no-param-reassign": ["error", { props: false }]
   },
   globals: {
-    React: true
+    React: true,
+    ReactDOM: true
   }
 };
