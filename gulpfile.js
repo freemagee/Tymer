@@ -28,7 +28,7 @@ const paths = {
   styles: {
     src: `${basePaths.src}library/scss`,
     files: `${basePaths.src}library/scss/**/*.scss`,
-    dest: `${basePaths.src}library/css`
+    dest: `${basePaths.dest}library/css`
   }
 };
 // A display error function, to format and make custom errors more uniform
