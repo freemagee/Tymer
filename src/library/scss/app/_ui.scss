@@ -5,31 +5,43 @@
 .setMinutes,
 .setSeconds {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
   flex: 1;
 
   &__btn {
     padding: 0;
-    flex: 0 1 100px;
+    flex: 0 1 50px;
     color: #fff;
-    font-size: 3rem;
+    font-size: 2rem;
+    line-height: 2rem;
     transition: background-color 0.2s;
+
+    @include respond-to('medium') {
+      flex: 0 1 100px;
+      font-size: 3rem;
+      line-height: 3rem;
+    }
   }
 
   &__input {
-    flex: 1;
+    width: 50px;
+    flex: 1 0 auto;
     text-align: center;
     background-color: $input-background;
     border: 0;
     color: $input-color;
-    font-size: 2.3rem;
+    font-size: 1.5rem;
     transition: background-color 0.2s;
 
     &:focus {
       background-color: darken($input-background, 5%);
       color: darken($input-color, 5%);
       outline: 0;
+    }
+
+    @include respond-to('medium') {
+      font-size: 2.3rem;
     }
   }
 }

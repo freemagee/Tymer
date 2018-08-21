@@ -9,12 +9,21 @@
 }
 
 .timeContainer {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   display: flex;
   align-items: center;
+  cursor: pointer;
+
+  @include respond-to('medium') {
+    height: calc(100vh - 100px);
+  }
 }
 
 .setTimeContainer {
   display: flex;
-  height: 100px;
+  height: 50px;
+
+  @include respond-to('medium') {
+    height: 100px;
+  }
 }
