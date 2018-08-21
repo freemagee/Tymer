@@ -125,7 +125,7 @@ gulp.task("watch-styles", ["compile-styles"], () => {
 
 // Watch js files and reload browser
 // gulp.task("watch-js", () => {
-//   gulp.watch([paths.scripts.src, paths.scripts.calendar]).on("change", evt => {
+//   gulp.watch([paths.scripts.src]).on("change", evt => {
 //     browserSync.reload();
 //     notify(
 //       `[watcher] File ${evt.path.replace(/.*(?=Javascript)/, "")} was ${
@@ -141,7 +141,7 @@ gulp.task("serve", ["watch-styles"], () => {
   // Docs: https://www.browsersync.io/docs/gulp
   browserSync.init({
     server: {
-      baseDir: "./build"
+      baseDir: "./"
     }
     // proxy: "http://localhost:3030"
   });
