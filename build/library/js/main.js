@@ -36,10 +36,9 @@ var RenderTime = React.createClass({
     } else {
       this.countdownTime = this.countdownTime - 1000;
 
-      var remainingTime = new Date(this.countdownTime);
-      var remainingSecs = remainingTime.getSeconds();
-      var remainingMins = remainingTime.getMinutes();
-      var remainingHours = remainingTime.getHours();
+      var remainingSecs = this.calculateRemainingSeconds(this.countdownTime);
+      var remainingMins = Math.floor(this.countdownTime / 60000);
+      var remainingHours = Math.floor(this.countdownTime / 3600000);
 
       // Deal with 60 mins equalling 1 hour & 1 hour equalling 00 mins in time format 01:00:00
       if (remainingHours >= 1) {
@@ -48,6 +47,12 @@ var RenderTime = React.createClass({
 
       this.updateTime(remainingMins.pad(), remainingSecs.pad());
     }
+  },
+  calculateRemainingSeconds(ms) {
+    var secs = ms / 1000;
+    var mins = secs / 60;
+
+    return Math.round((mins % 1) * 60);
   },
   handleClick: function() {
     if (this.props.timerState !== 'started') {
