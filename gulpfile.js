@@ -29,6 +29,9 @@ const paths = {
     src: `${basePaths.src}library/scss`,
     files: `${basePaths.src}library/scss/**/*.scss`,
     dest: `${basePaths.dest}library/css`
+  },
+  scripts: {
+    src: `${basePaths.dest}/library/js/*.js`
   }
 };
 // A display error function, to format and make custom errors more uniform
@@ -124,19 +127,19 @@ gulp.task("watch-styles", ["compile-styles"], () => {
 });
 
 // Watch js files and reload browser
-// gulp.task("watch-js", () => {
-//   gulp.watch([paths.scripts.src]).on("change", evt => {
-//     browserSync.reload();
-//     notify(
-//       `[watcher] File ${evt.path.replace(/.*(?=Javascript)/, "")} was ${
-//         evt.type
-//       }, reloading browser...`
-//     ).write("");
-//   });
-// });
+gulp.task("watch-js", () => {
+  gulp.watch([paths.scripts.src]).on("change", evt => {
+    browserSync.reload();
+    notify(
+      `[watcher] File ${evt.path.replace(/.*(?=Javascript)/, "")} was ${
+        evt.type
+      }, reloading browser...`
+    ).write("");
+  });
+});
 
 // Serve site and enable browsersync
-gulp.task("serve", ["watch-styles"], () => {
+gulp.task("serve", ["watch-styles", "watch-js"], () => {
   // Initiate BrowserSync
   // Docs: https://www.browsersync.io/docs/gulp
   browserSync.init({
