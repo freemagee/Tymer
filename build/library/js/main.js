@@ -11,6 +11,11 @@ const ENTER_KEY = 13;
 const RenderTime = React.createClass({
   countdown: null,
   countdownTime: 0,
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.timerState === "stopped") {
+      this.countdownStop();
+    }
+  },
   countdownStart(m, s) {
     const targetTime = m * 60 + s * 1;
 
@@ -18,12 +23,15 @@ const RenderTime = React.createClass({
     this.countdownTime = targetTime * 1000;
     this.countdown = setInterval(this.countdownCalculate, 1000);
   },
-  countdownComplete() {
+  countdownStop() {
     clearInterval(this.countdown);
+  },
+  countdownComplete() {
+    this.countdownStop();
     this.updateState("stopped");
   },
   countdownPause() {
-    clearInterval(this.countdown);
+    this.countdownStop();
     this.updateState("paused");
   },
   countdownRestart() {
@@ -111,7 +119,7 @@ const SetSecondsUI = React.createClass({
     if (currentSecs >= 59) {
       newSecs = "00";
     } else {
-      newSecs = pad((currentSecs + 1));
+      newSecs = pad(currentSecs + 1);
       String(newSecs);
     }
 
@@ -124,7 +132,7 @@ const SetSecondsUI = React.createClass({
     if (currentSecs === 0) {
       newSecs = "59";
     } else {
-      newSecs = pad((currentSecs - 1));
+      newSecs = pad(currentSecs - 1);
       String(newSecs);
     }
 
@@ -275,6 +283,30 @@ const SetMinutesUI = React.createClass({
   }
 });
 
+const ResetTimer = React.createClass({
+  propTypes: {
+    timerState: React.PropTypes.string
+  },
+  handleClick() {
+    this.props.resetTime();
+  },
+  render() {
+    const className =
+      this.props.timerState !== "stopped"
+        ? "resetTimeContainer isActive"
+        : "resetTimeContainer";
+    return React.createElement(
+      "div",
+      { className },
+      React.createElement("button", {
+        className: "resetTime",
+        children: "Reset",
+        onClick: this.handleClick
+      })
+    );
+  }
+});
+
 const SetTimeUI = React.createClass({
   propTypes: {
     minutes: React.PropTypes.string,
@@ -318,6 +350,15 @@ const SetTimeUI = React.createClass({
       renderedSeconds: s
     });
   },
+  resetTime() {
+    this.setState({
+      timerState: "stopped",
+      minutes: "01",
+      seconds: "00",
+      renderedMinutes: "01",
+      renderedSeconds: "00"
+    });
+  },
   generateAppClassName() {
     if (this.state.timerState === "started") {
       return "appContainer appContainer--started";
@@ -349,7 +390,11 @@ const SetTimeUI = React.createClass({
           seconds: this.state.seconds,
           onChange: this.setSeconds
         })
-      )
+      ),
+      React.createElement(ResetTimer, {
+        timerState: this.state.timerState,
+        resetTime: this.resetTime
+      })
     );
   }
 });

@@ -1,5 +1,7 @@
 .appContainer {
+  position: relative;
   height: 100vh;
+  overflow: hidden;
 
   &--paused {
     .timeContainer {
@@ -25,5 +27,23 @@
 
   @include respond-to('medium') {
     height: 100px;
+  }
+}
+
+.resetTimeContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  transform: translateY(50px);
+  transition: transform 0.2s ease-in-out;
+
+  @include respond-to('medium') {
+    height: 100px;
+    transform: translateY(100px);
+  }
+
+  &.isActive {
+    transform: translateY(0);
   }
 }

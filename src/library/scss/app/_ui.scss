@@ -14,13 +14,13 @@
     flex: 0 1 50px;
     color: #fff;
     font-size: 2rem;
-    line-height: 2rem;
+    line-height: 50px;
     transition: background-color 0.2s;
 
     @include respond-to('medium') {
       flex: 0 1 100px;
       font-size: 3rem;
-      line-height: 3rem;
+      line-height: 100px;
     }
   }
 
@@ -65,6 +65,37 @@
   &:active {
     background-color: darken($spinner-secs, 10%);
     text-shadow: 0 -1px 0 darken($spinner-secs, 20%);
+  }
+}
+
+.resetTime {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  color: #fff;
+  font-family: $text-font-stack;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 -1px 0 darken($spinner-secs, 10%);
+  background-color: $reset;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  @include respond-to('medium') {
+    font-size: 3rem;
+    line-height: 100px;
+  }
+
+  &:hover,
+  &:active {
+    background-color: darken($reset, 10%);
+    text-shadow: 0 -1px 0 darken($reset, 20%);
   }
 }
 
