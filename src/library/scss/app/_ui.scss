@@ -100,12 +100,17 @@
 }
 
 .number {
-  flex: 1;
+  flex: 1 0 24%;
   font-family: 'Oswald', monospace;
   font-weight: 700;
   text-align: center;
+  line-height: 1;
+}
 
-  &__seperator {
-    flex: 0;
-  }
+.seperator {
+  flex: 1 0 4%;
+  font-family: 'Oswald', monospace;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1;
 }

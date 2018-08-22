@@ -2,11 +2,14 @@
   position: relative;
   height: 100vh;
   overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s 0.3s, opacity 0.3s linear;
 
-  &--paused {
-    .timeContainer {
-      animation: blinker 1s ease-in-out infinite;
-    }
+  &.isReady {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s linear;
   }
 }
 
@@ -18,6 +21,10 @@
 
   @include respond-to('medium') {
     height: calc(100vh - 100px);
+  }
+
+  &--paused {
+    animation: blinker 1s ease-in-out infinite;
   }
 }
 

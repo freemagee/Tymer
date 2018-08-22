@@ -1,3 +1,7 @@
+const WAIT_INTERVAL = 1000;
+const ENTER_KEY = 13;
+
+// Non React functions
 function pad(s, size) {
   let o = s.toString();
   while (o.length < (size || 2)) {
@@ -6,8 +10,8 @@ function pad(s, size) {
   return o;
 }
 
-const WAIT_INTERVAL = 1000;
-const ENTER_KEY = 13;
+// React
+
 const RenderTime = React.createClass({
   countdown: null,
   countdownTime: 0,
@@ -81,21 +85,38 @@ const RenderTime = React.createClass({
   updateState(state) {
     this.props.updateState(state);
   },
+  generateClassName() {
+    if (this.props.timerState === "started") {
+      return "timeContainer timeContainer--started";
+    } else if (this.props.timerState === "paused") {
+      return "timeContainer timeContainer--paused";
+    }
+
+    return "timeContainer";
+  },
   render() {
     return React.createElement(
       "div",
-      { className: "timeContainer", onClick: this.handleClick },
+      { className: this.generateClassName(), onClick: this.handleClick },
       React.createElement("div", {
         className: "number number--mins",
-        children: this.props.minutes
+        children: this.props.minutes.split("")[0]
       }),
       React.createElement("div", {
-        className: "number__seperator",
+        className: "number number--mins",
+        children: this.props.minutes.split("")[1]
+      }),
+      React.createElement("div", {
+        className: "seperator",
         children: ":"
       }),
       React.createElement("div", {
         className: "number number--secs",
-        children: this.props.seconds
+        children: this.props.seconds.split("")[0]
+      }),
+      React.createElement("div", {
+        className: "number number--secs",
+        children: this.props.seconds.split("")[1]
       })
     );
   }
@@ -333,6 +354,7 @@ const SetTimeUI = React.createClass({
   },
   getInitialState() {
     return {
+      uiReady: false,
       timerState: "stopped",
       timerDone: false,
       minutes: "01",
@@ -340,6 +362,20 @@ const SetTimeUI = React.createClass({
       renderedMinutes: "01",
       renderedSeconds: "00"
     };
+  },
+  componentDidMount() {
+    // Fake loading...
+    // const that = this;
+    // window.setTimeout(function() {
+    //   console.log("I am mounting");
+    //   that.setState({
+    //     uiReady: true
+    //   });
+    // }, 10000);
+
+    this.setState({
+      uiReady: true
+    });
   },
   updateState(state) {
     if (state === "stopped") {
@@ -384,19 +420,12 @@ const SetTimeUI = React.createClass({
   closeDoneMsg() {
     this.resetTime();
   },
-  generateAppClassName() {
-    if (this.state.timerState === "started") {
-      return "appContainer appContainer--started";
-    } else if (this.state.timerState === "paused") {
-      return "appContainer appContainer--paused";
-    }
-
-    return "appContainer";
-  },
   render() {
+    const isReadyClass = this.state.uiReady ? "appContainer isReady" : "appContainer";
+
     return React.createElement(
       "div",
-      { className: this.generateAppClassName() },
+      { className: isReadyClass },
       React.createElement(RenderTime, {
         timerState: this.state.timerState,
         updateState: this.updateState,
