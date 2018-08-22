@@ -307,6 +307,25 @@ const ResetTimer = React.createClass({
   }
 });
 
+const TimerDone = React.createClass({
+  handleClick() {
+    this.props.closeDoneMsg();
+  },
+  render() {
+    const className = this.props.timerDone ? "timerDone isActive" : "timerDone";
+    return React.createElement(
+      "div",
+      { className },
+      React.createElement("button", {
+        className: "timerDone__btn",
+        children: "Tymer Completed",
+        onClick: this.handleClick
+      })
+    );
+  }
+});
+
+// SetTimeUI is the "parent" component
 const SetTimeUI = React.createClass({
   propTypes: {
     minutes: React.PropTypes.string,
@@ -315,6 +334,7 @@ const SetTimeUI = React.createClass({
   getInitialState() {
     return {
       timerState: "stopped",
+      timerDone: false,
       minutes: "01",
       seconds: "00",
       renderedMinutes: "01",
@@ -325,7 +345,8 @@ const SetTimeUI = React.createClass({
     if (state === "stopped") {
       this.setState({
         renderedMinutes: this.state.minutes,
-        renderedSeconds: this.state.seconds
+        renderedSeconds: this.state.seconds,
+        timerDone: true
       });
     }
     this.setState({
@@ -353,11 +374,15 @@ const SetTimeUI = React.createClass({
   resetTime() {
     this.setState({
       timerState: "stopped",
+      timerDone: false,
       minutes: "01",
       seconds: "00",
       renderedMinutes: "01",
       renderedSeconds: "00"
     });
+  },
+  closeDoneMsg() {
+    this.resetTime();
   },
   generateAppClassName() {
     if (this.state.timerState === "started") {
@@ -394,6 +419,10 @@ const SetTimeUI = React.createClass({
       React.createElement(ResetTimer, {
         timerState: this.state.timerState,
         resetTime: this.resetTime
+      }),
+      React.createElement(TimerDone, {
+        timerDone: this.state.timerDone,
+        closeDoneMsg: this.closeDoneMsg
       })
     );
   }
