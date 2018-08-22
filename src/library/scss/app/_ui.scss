@@ -100,7 +100,8 @@
 }
 
 .number {
-  flex: 1 0 24%;
+  width: 48%;
+  //height: 100%;
   font-family: 'Oswald', monospace;
   font-weight: 700;
   text-align: center;
@@ -108,9 +109,10 @@
 }
 
 .seperator {
-  flex: 1 0 4%;
-  font-family: 'Oswald', monospace;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1;
+  width: 4%;
+  height: 100%;
+  background-image: url(../img/sep.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100%;
 }

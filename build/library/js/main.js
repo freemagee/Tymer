@@ -10,6 +10,46 @@ function pad(s, size) {
   return o;
 }
 
+function fitText() {
+  const fontHeightFactor = 1.71; // Danger, danger...magic number relative to Oswald font...
+  const buffer = document.querySelectorAll(".setTimeContainer")[0].clientHeight;
+  const tymerHeight = window.innerHeight - buffer;
+  const availableTotalWidth = window.innerWidth;
+  const target = document.querySelectorAll(".number")[0];
+  const style = window
+    .getComputedStyle(target, null)
+    .getPropertyValue("font-size");
+  const currentFontSize = parseFloat(style);
+  const currentFontWidth = Math.floor(target.clientWidth / 2);
+  const proposedFontHeight = tymerHeight;
+  const proposedFontWidth = Math.floor(proposedFontHeight / fontHeightFactor);
+
+  // Calculates font height based on available height and width
+  function optimumFit() {
+    let optimumFontHeight;
+
+    if (proposedFontWidth < currentFontWidth) {
+      optimumFontHeight = Math.floor((proposedFontHeight / 100) * 95); // 95%, so that the digits have some whitespace above & below
+    } else if (
+      proposedFontWidth * 4 + (proposedFontWidth / 100) * 10 >
+      availableTotalWidth
+    ) {
+      optimumFontHeight = currentFontWidth * fontHeightFactor;
+    } else {
+      optimumFontHeight = currentFontSize;
+    }
+
+    return document.createRange()
+      .createContextualFragment(`<style type="text/css" id="fit">
+      .number { font-size: ${optimumFontHeight}px; }
+    </style>`);
+  }
+
+  document.head.appendChild(optimumFit());
+
+  return true;
+}
+
 // React
 
 const RenderTime = React.createClass({
@@ -100,23 +140,14 @@ const RenderTime = React.createClass({
       { className: this.generateClassName(), onClick: this.handleClick },
       React.createElement("div", {
         className: "number number--mins",
-        children: this.props.minutes.split("")[0]
+        children: this.props.minutes
       }),
       React.createElement("div", {
-        className: "number number--mins",
-        children: this.props.minutes.split("")[1]
-      }),
-      React.createElement("div", {
-        className: "seperator",
-        children: ":"
+        className: "seperator"
       }),
       React.createElement("div", {
         className: "number number--secs",
-        children: this.props.seconds.split("")[0]
-      }),
-      React.createElement("div", {
-        className: "number number--secs",
-        children: this.props.seconds.split("")[1]
+        children: this.props.seconds
       })
     );
   }
@@ -365,17 +396,14 @@ const SetTimeUI = React.createClass({
   },
   componentDidMount() {
     // Fake loading...
-    // const that = this;
-    // window.setTimeout(function() {
-    //   console.log("I am mounting");
-    //   that.setState({
-    //     uiReady: true
-    //   });
-    // }, 10000);
-
-    this.setState({
-      uiReady: true
-    });
+    if (fitText()) {
+      const that = this;
+      window.setTimeout(() => {
+        that.setState({
+          uiReady: true
+        });
+      }, 1000);
+    }
   },
   updateState(state) {
     if (state === "stopped") {
@@ -421,7 +449,9 @@ const SetTimeUI = React.createClass({
     this.resetTime();
   },
   render() {
-    const isReadyClass = this.state.uiReady ? "appContainer isReady" : "appContainer";
+    const isReadyClass = this.state.uiReady
+      ? "appContainer isReady"
+      : "appContainer";
 
     return React.createElement(
       "div",
