@@ -69,9 +69,6 @@ gulp.task("compile-styles", () => {
           "400": [],
           "400i": [],
           "700": []
-        },
-        Oswald: {
-          "700": []
         }
       },
       foundries: ["google"],

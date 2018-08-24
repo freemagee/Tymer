@@ -98,21 +98,3 @@
     text-shadow: 0 -1px 0 darken($reset, 20%);
   }
 }
-
-.number {
-  width: 48%;
-  //height: 100%;
-  font-family: 'Oswald', monospace;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1;
-}
-
-.seperator {
-  width: 4%;
-  height: 100%;
-  background-image: url(../img/sep.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100%;
-}
