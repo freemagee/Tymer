@@ -1,7 +1,7 @@
 Tymer
 =====
 
-**Live Project:** [http://neilmagee.com/project/tymer](http://neilmagee.com/project/tymer)
+**Live Project:** [https://freemagee.github.io/tymer/](https://freemagee.github.io/tymer/)
 
 *Features*
 
@@ -17,7 +17,7 @@ Tymer is a simple web based countdown app. It has been designed to be lightweigh
 
 Try it on your laptop, tablet or phone for use while cooking, exercising or designated periods of watching paint dry.
 
-For more information please visit [http://neilmagee.com/project/tymer/why](http://neilmagee.com/project/tymer/why.html)
+For more information please visit [https://freemagee.github.io/tymer/why](https://freemagee.github.io/tymer/why)
 
 #### Technology
 
@@ -25,7 +25,7 @@ Tymer uses Javascript (jQuery), CSS (SCSS) and HTML.
 
 ## Notes
 
-This is a legacy project. Originally created in May 15, 2013. I have made changes over the years, mainly from a technology perspective. There is a React ([React Without JSX](https://reactjs.org/docs/react-without-jsx.html)) branch and a new branch as of August 21, 2018 that will be using the official (Create React App)[https://github.com/facebook/create-react-app].
+*This is a legacy project.* Originally created in May 15, 2013. I have made changes over the years, mainly from a technology perspective. There is a React ([React Without JSX](https://reactjs.org/docs/react-without-jsx.html)) branch and a new branch as of August 21, 2018 that will be using the official (Create React App)[https://github.com/facebook/create-react-app].
 
 The master has recently been updated to fix a bug. I took the liberty to fix some other issues as well so that even though it is an older technology, it still works.
 
