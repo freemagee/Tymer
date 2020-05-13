@@ -25,7 +25,7 @@ Tymer uses Javascript (jQuery), CSS (SCSS) and HTML.
 
 ## Notes
 
-*This is a legacy project.* Originally created in May 15, 2013. I have made changes over the years, mainly from a technology perspective. There is a React ([React Without JSX](https://reactjs.org/docs/react-without-jsx.html)) branch and a new branch as of August 21, 2018 that will be using the official (Create React App)[https://github.com/facebook/create-react-app].
+*This is a legacy project.* Originally created in May 15, 2013. I have made changes over the years, mainly from a technology perspective. There is a React ([React Without JSX](https://reactjs.org/docs/react-without-jsx.html)) branch. But that branch was unfinished.
 
 The master has recently been updated to fix a bug. I took the liberty to fix some other issues as well so that even though it is an older technology, it still works.
 
